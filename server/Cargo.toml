@@ -1,0 +1,17 @@
+[package]
+name = "hows-the-volume-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.5.10" # The webapp framework of choice.
+dotenv = "0.15.0" # For accessing env vars stored in .env
+sqlx = { version = "0.6.0", features = ["runtime-tokio-rustls", "sqlite"] } # For storing counts. Overkill.
+tracing = "0.1.35" # For tracing, alongside tracing-subscriber.
+tracing-subscriber = "0.3.11"
+tokio = { version = "1.19.2", features = ["full"] } # tokio's used for async.
+tower = "0.4.13" # Used alongside tower-http for serving files.
+tower-http = { version = "0.3.4", features = ["full"] }
+
+[build-dependencies]
+dotenv = "0.15.0" # For accessing env vars stored in .env

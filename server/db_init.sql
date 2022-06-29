@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS counts (name TEXT PRIMARY KEY, count INTEGER NOT NULL);
+INSERT OR IGNORE INTO counts (name, count) VALUES ('volume', 0);
