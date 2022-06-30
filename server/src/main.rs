@@ -3,15 +3,19 @@ use std::{env, sync::Arc};
 use axum::{
     body::Body,
     extract::{rejection::PathRejection, Path},
-    http::{Request, StatusCode},
+    http::{Method, Request, StatusCode},
     response::{IntoResponse, Response},
     routing::{get, post},
     Extension, Json, Router,
 };
 use dotenv::dotenv;
+use serde::Serialize;
 use sqlx::{Pool, Sqlite, SqlitePool};
 use tower::util::ServiceExt;
-use tower_http::services::ServeDir;
+use tower_http::{
+    cors::{self, CorsLayer},
+    services::ServeDir,
+};
 use tracing::info;
 
 #[tokio::main]
@@ -25,13 +29,18 @@ async fn main() {
 
     let pool_rc = Arc::new(pool);
 
+    let cors = CorsLayer::new()
+        .allow_methods(vec![Method::GET, Method::POST])
+        .allow_origin(cors::Any); // FIXME: For now.
+
     let app = Router::new()
         .route("/sound/:id", get(sound))
         .route("/count", get(count))
         .route("/increment", post(increment))
+        .layer(cors)
         .layer(Extension(pool_rc.clone()));
 
-    let addr = "0.0.0.0:3000".parse().unwrap();
+    let addr = "0.0.0.0:8080".parse().unwrap();
 
     info!("Listening on {}", addr);
     axum::Server::bind(&addr)
@@ -51,8 +60,19 @@ async fn main() {
 
 type PoolExt = Arc<Pool<Sqlite>>;
 
+#[derive(Serialize)]
+struct Count {
+    count: u64,
+}
+
+impl Count {
+    fn new(count: u64) -> Self {
+        Self { count }
+    }
+}
+
 /// Returns the current global count, stored in the DB.
-async fn count(Extension(pool): Extension<PoolExt>) -> Json<u64> {
+async fn count(Extension(pool): Extension<PoolExt>) -> Json<Count> {
     let mut conn = pool.acquire().await.unwrap();
 
     let count = sqlx::query!("SELECT count FROM counts WHERE name = 'volume'")
@@ -61,13 +81,13 @@ async fn count(Extension(pool): Extension<PoolExt>) -> Json<u64> {
         .unwrap()
         .count as u64;
 
-    Json(count)
+    Json(Count::new(count))
 }
 
 /// Returns the selected sound file if it exists.
 async fn sound(id_result: Result<Path<u32>, PathRejection>) -> Response {
     if let Ok(Path(id)) = id_result {
-        const PREFIX: &str = "pomu";
+        const PREFIX: &str = "volume_";
         const SUFFIX: &str = ".mp3";
 
         let uri = format!("/{}{:0>2}{}", PREFIX, id, SUFFIX);
@@ -84,7 +104,7 @@ async fn sound(id_result: Result<Path<u32>, PathRejection>) -> Response {
 }
 
 /// Increments the count.
-async fn increment(Extension(pool): Extension<PoolExt>) -> Json<u64> {
+async fn increment(Extension(pool): Extension<PoolExt>) -> Json<Count> {
     let mut conn = pool.acquire().await.unwrap();
 
     let count =
@@ -95,5 +115,5 @@ async fn increment(Extension(pool): Extension<PoolExt>) -> Json<u64> {
             .count
             .unwrap_or(0) as u64;
 
-    Json(count)
+    Json(Count::new(count))
 }
