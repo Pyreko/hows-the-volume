@@ -50,4 +50,5 @@ jobs:
       - name: Test building server
         run: |
           cd server
+          ./setup.sh
           cargo build
