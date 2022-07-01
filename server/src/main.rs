@@ -3,6 +3,7 @@ use std::{env, sync::Arc};
 use axum::{
     body::Body,
     extract::{rejection::PathRejection, Path},
+    handler::Handler,
     http::{HeaderValue, Method, Request, StatusCode},
     response::{IntoResponse, Response},
     routing::{get, post},
@@ -48,6 +49,7 @@ async fn main() {
         .route("/sound/:id", get(sound))
         .route("/count", get(count))
         .route("/increment", post(increment))
+        .fallback(not_found_handler.into_service())
         .layer(cors)
         .layer(Extension(pool_rc.clone()));
 
@@ -67,6 +69,10 @@ async fn main() {
     pool_rc.close().await;
 
     info!("Shutting down server.");
+}
+
+async fn not_found_handler() -> impl IntoResponse {
+    StatusCode::NOT_FOUND
 }
 
 type PoolExt = Arc<Pool<Sqlite>>;
