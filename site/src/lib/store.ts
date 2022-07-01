@@ -1,6 +1,7 @@
 import { get, writable, type Writable } from 'svelte/store';
+import { dev } from '$app/env';
 
-export const API_URL = 'http://localhost:8080';
+export const API_URL: string = dev ? 'http://localhost:8080' : 'https://api.howsthevolu.me';
 
 export const localCount = ((): Writable<number> => {
 	if (typeof localStorage !== 'undefined') {
@@ -63,3 +64,5 @@ export const globalCount = writable(await getGlobalCount(), (set) => {
 		clearInterval(interval);
 	};
 });
+
+

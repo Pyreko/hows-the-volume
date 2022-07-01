@@ -53,6 +53,7 @@
         text-decoration: none;
         border: none;
         border-radius: 6px;
+        cursor:pointer;
     }
 
  

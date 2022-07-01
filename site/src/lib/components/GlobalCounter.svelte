@@ -18,7 +18,7 @@
 
 	.globalCountWrap h1 {
 		margin: 0px;
-		font-size: 3.5em;
+		font-size: 4em;
 		font-family: 'Riffic', sans-serif;
 	}
 
