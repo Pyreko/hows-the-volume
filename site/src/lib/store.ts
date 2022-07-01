@@ -49,13 +49,13 @@ export const globalCount = writable(await getGlobalCount(), (set) => {
 		const newVal = await getGlobalCount();
 
 		// Some ugly code to make a pretty count-up.
-		let curVal = get(globalCount);
+		let currentVal = get(globalCount);
 		const timer = setInterval(() => {
-			if (curVal >= newVal) {
+			if (currentVal >= newVal) {
 				clearInterval(timer);
 			} else {
-				curVal += 1;
-				set(curVal);
+				currentVal += 1;
+				set(currentVal);
 			}
 		}, 10);
 	}, 20 * 1000);
@@ -65,4 +65,4 @@ export const globalCount = writable(await getGlobalCount(), (set) => {
 	};
 });
 
-
+export const clickOpacity = writable(0);
