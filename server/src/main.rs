@@ -15,6 +15,7 @@ use tower::util::ServiceExt;
 use tower_http::{
     cors::{self, CorsLayer},
     services::ServeDir,
+    trace::TraceLayer,
 };
 use tracing::{info, warn};
 use tracing_subscriber::filter::EnvFilter;
@@ -43,10 +44,14 @@ async fn main() {
         .allow_methods(vec![Method::GET, Method::POST])
         .allow_origin(cors::Any); // FIXME: For now.
 
-    let app = Router::new()
+    let api = Router::new()
         .route("/sound/:id", get(sound))
         .route("/count", get(count))
         .route("/increment", post(increment))
+        .layer(TraceLayer::new_for_http());
+
+    let app = Router::new()
+        .nest("/api", api)
         .layer(cors)
         .layer(Extension(pool_rc.clone()));
 
