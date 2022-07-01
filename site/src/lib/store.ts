@@ -1,4 +1,4 @@
-import { writable, type Writable } from 'svelte/store';
+import { get, writable, type Writable } from 'svelte/store';
 
 export const API_URL = 'http://localhost:8080';
 
@@ -45,7 +45,18 @@ export const incrementGlobalCount = async () => {
 
 export const globalCount = writable(await getGlobalCount(), (set) => {
 	const interval = setInterval(async () => {
-		set(await getGlobalCount());
+		const newVal = await getGlobalCount();
+
+		// Some ugly code to make a pretty count-up.
+		let curVal = get(globalCount);
+		const timer = setInterval(() => {
+			if (curVal >= newVal) {
+				clearInterval(timer);
+			} else {
+				curVal += 1;
+				set(curVal);
+			}
+		}, 10);
 	}, 20 * 1000);
 
 	return () => {

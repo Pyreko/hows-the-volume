@@ -104,16 +104,11 @@ async fn sound(id_result: Result<Path<u32>, PathRejection>) -> Response {
 }
 
 /// Increments the count.
-async fn increment(Extension(pool): Extension<PoolExt>) -> Json<Count> {
+async fn increment(Extension(pool): Extension<PoolExt>) {
     let mut conn = pool.acquire().await.unwrap();
 
-    let count =
-        sqlx::query!("UPDATE counts SET count = count + 1 WHERE name = 'volume' RETURNING count")
-            .fetch_one(&mut conn)
-            .await
-            .unwrap()
-            .count
-            .unwrap_or(0) as u64;
-
-    Json(Count::new(count))
+    sqlx::query!("UPDATE counts SET count = count + 1 WHERE name = 'volume'")
+        .execute(&mut conn)
+        .await
+        .unwrap();
 }
