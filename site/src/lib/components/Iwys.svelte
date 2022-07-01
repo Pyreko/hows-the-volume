@@ -1,9 +1,10 @@
 <div>
 	<p>
-		Subscribe to IRyS on <a href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g"
-			>YouTube</a
+		Subscribe to IRyS on <a
+			href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g"
+			target="_blank">YouTube</a
 		>
-		and follow her on <a href="https://twitter.com/irys_en">Twitter</a>!
+		and follow her on <a href="https://twitter.com/irys_en" target="_blank">Twitter</a>!
 	</p>
 </div>
 

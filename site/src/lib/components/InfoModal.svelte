@@ -22,15 +22,17 @@
 			<div class="text-block">
 				<h1>What is this?</h1>
 				<p>
-					This is a site for <a href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g"
-						>IRyS</a
+					This is a site for <a
+						href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g"
+						target="_blank">IRyS</a
 					>, one of Hololive's resident <strike>pons</strike> VSingers! Inspired by
-					<a href="https://impomu.com/">impomu</a>
-					and <a href="https://faunaraara.com/">faunaraara</a>.
+					<a href="https://impomu.com/" target="_blank">impomu</a>
+					and <a href="https://faunaraara.com/" target="_blank">faunaraara</a>.
 				</p>
 				<p>
 					For those interested in the source code for both the site and server, it can be found <a
-						href="https://github.com/Pyreko/hows-the-volume">over here on GitHub</a
+						href="https://github.com/Pyreko/hows-the-volume"
+						target="_blank">over here on GitHub</a
 					>.
 				</p>
 			</div>
@@ -38,7 +40,8 @@
 				<h1>Where's the volume?</h1>
 				<p>
 					All voice clips and their sources can also be found in the <a
-						href="https://github.com/Pyreko/hows-the-volume/tree/main/server/assets">GitHub repo</a
+						href="https://github.com/Pyreko/hows-the-volume/tree/main/server/assets"
+						target="_blank">GitHub repo</a
 					>.
 				</p>
 			</div>
@@ -48,7 +51,7 @@
 				<ul>
 					<li>
 						<p>
-							<a href="https://twitter.com/chrone_co/status/1426878310328332292"
+							<a href="https://twitter.com/chrone_co/status/1426878310328332292" target="_blank"
 								>Chroneco's emotes and tweet</a
 							> were used for the favicon and inspiration for theming.
 						</p>
@@ -56,19 +59,21 @@
 					<li>
 						<p>
 							The font used throughout is <a
-								href="https://www.fontspring.com/fonts/inky-type/riffic">Riffic Free Bold</a
+								href="https://www.fontspring.com/fonts/inky-type/riffic"
+								target="_blank">Riffic Free Bold</a
 							>.
 						</p>
 					</li>
 					<li>
 						<p>
-							The frontend is written in <a href="https://svelte.dev/">Svelte</a>.
+							The frontend is written in <a href="https://svelte.dev/" target="_blank">Svelte</a>.
 						</p>
 					</li>
 					<li>
 						<p>
-							The backend is written in <a href="https://www.rust-lang.org/">Rust</a>, using the
-							<a href="https://github.com/tokio-rs/axum">axum framework</a>.
+							The backend is written in <a href="https://www.rust-lang.org/" target="_blank">Rust</a
+							>, using the
+							<a href="https://github.com/tokio-rs/axum" target="_blank">axum framework</a>.
 						</p>
 					</li>
 				</ul>
