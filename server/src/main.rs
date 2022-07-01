@@ -15,7 +15,6 @@ use tower::util::ServiceExt;
 use tower_http::{
     cors::{self, CorsLayer},
     services::ServeDir,
-    trace::TraceLayer,
 };
 use tracing::{info, warn};
 use tracing_subscriber::filter::EnvFilter;
@@ -47,8 +46,7 @@ async fn main() {
     let api = Router::new()
         .route("/sound/:id", get(sound))
         .route("/count", get(count))
-        .route("/increment", post(increment))
-        .layer(TraceLayer::new_for_http());
+        .route("/increment", post(increment));
 
     let app = Router::new()
         .nest("/api", api)
