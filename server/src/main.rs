@@ -41,7 +41,7 @@ async fn main() {
 
     let cors = CorsLayer::new()
         .allow_methods(vec![Method::GET, Method::POST])
-        .allow_origin(cors::Any);    // FIXME: For now.
+        .allow_origin(cors::Any); // FIXME: For now.
 
     let app = Router::new()
         .route("/sound/:id", get(sound))
