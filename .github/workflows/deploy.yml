@@ -11,8 +11,12 @@ env:
   GIT_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
 
 jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
   deploy:
     name: "Deploy static page"
+    needs: ci
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
