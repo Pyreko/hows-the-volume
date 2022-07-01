@@ -9,6 +9,7 @@
 
 <style>
 	p {
+		text-align: center;
 		font-family: 'Riffic', sans-serif;
 		color: #5e0113;
 		font-size: small;

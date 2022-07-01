@@ -20,11 +20,13 @@
 		margin: 0px;
 		font-size: 4em;
 		font-family: 'Riffic', sans-serif;
+		text-align: center;
 	}
 
 	.gl-count-wrapper p {
 		margin: 0px;
-        font-size: 2em;
+		font-size: 2em;
 		font-family: 'Riffic', sans-serif;
+		text-align: center;
 	}
 </style>

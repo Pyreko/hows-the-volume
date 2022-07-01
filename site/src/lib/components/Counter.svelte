@@ -10,5 +10,6 @@
 		font-size: large;
 		margin-top: 1.75rem;
 		margin-bottom: 0.2rem;
+		text-align: center;
 	}
 </style>
