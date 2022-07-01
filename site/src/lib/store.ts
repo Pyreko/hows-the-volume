@@ -1,27 +1,29 @@
-import { get, writable, type Writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 import { dev } from '$app/env';
 
 export const API_URL: string = dev ? 'http://localhost:8080' : 'https://api.howsthevolu.me';
 
-export const localCount = ((): Writable<number> => {
+const getLocalCount = () => {
 	if (typeof localStorage !== 'undefined') {
 		const storedCount = localStorage.getItem('localCount');
 		if (storedCount == null) {
-			return writable(0);
+			return 0;
 		} else {
 			const parsed = parseInt(storedCount, 10);
 			if (isNaN(parsed)) {
-				return writable(0);
+				return 0;
 			} else {
-				return writable(parsed);
+				return parsed;
 			}
 		}
 	} else {
-		return writable(0);
+		return 0;
 	}
-})();
+};
 
-const getGlobalCount = async (): Promise<number> => {
+export const localCount = writable(getLocalCount());
+
+export const getGlobalCount = async (): Promise<number> => {
 	try {
 		const resp = await fetch(`${API_URL}/count`);
 
@@ -44,7 +46,7 @@ export const incrementGlobalCount = async () => {
 	await fetch(`${API_URL}/increment`, { method: 'POST' });
 };
 
-export const globalCount = writable(await getGlobalCount(), (set) => {
+export const globalCount = writable(0, (set) => {
 	const interval = setInterval(async () => {
 		const newVal = await getGlobalCount();
 

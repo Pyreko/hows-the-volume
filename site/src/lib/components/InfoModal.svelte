@@ -60,6 +60,17 @@
 							>.
 						</p>
 					</li>
+					<li>
+						<p>
+							The frontend is written in <a href="https://svelte.dev/">Svelte</a>.
+						</p>
+					</li>
+					<li>
+						<p>
+							The backend is written in <a href="https://www.rust-lang.org/">Rust</a>, using the
+							<a href="https://github.com/tokio-rs/axum">axum framework</a>.
+						</p>
+					</li>
 				</ul>
 			</div>
 		</div>
