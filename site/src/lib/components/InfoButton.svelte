@@ -21,6 +21,10 @@
 		border: none;
 		border-radius: 50%;
 		cursor: pointer;
+		text-align: center;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	button:hover {

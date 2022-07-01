@@ -93,8 +93,12 @@
 	}
 
 	.modal-wrapper {
-		width: 60%;
+		width: 1000px;
+		max-width: 100%;
+		height: auto;
+		max-height: 100%;
 		position: relative;
+		overflow: visible;
 	}
 
 	.close {
@@ -104,7 +108,7 @@
 		height: 18px;
 		top: 0;
 		right: 0;
-		margin-top: 12px;
+		margin-top: 2px;
 		margin-right: 10px;
 		background-color: transparent;
 		border: 0;
@@ -117,8 +121,6 @@
 	}
 
 	.modal-body {
-		margin-top: 10px;
-		margin-bottom: 10px;
 		display: flex;
 		flex-direction: column;
 		gap: 1.75em;
