@@ -69,7 +69,6 @@ export const globalCount = writable(0, (set) => {
 				const diff = newVal - currentVal;
 				if (diff < increment) {
 					increment = calculateIncrement(diff);
-					console.log(`increment: ${increment}`);
 				}
 
 				currentVal += increment;
