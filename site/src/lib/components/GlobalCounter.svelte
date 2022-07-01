@@ -2,13 +2,13 @@
 	import { globalCount } from '$lib/store';
 </script>
 
-<div class="globalCountWrap">
+<div class="gl-count-wrapper">
 	<p>Volumes checked across the world:</p>
 	<h1>{$globalCount.toLocaleString()}</h1>
 </div>
 
 <style>
-	.globalCountWrap {
+	.gl-count-wrapper {
 		display: flex;
 		flex-direction: column;
 		gap: 0.1em;
@@ -16,13 +16,13 @@
 		justify-content: center;
 	}
 
-	.globalCountWrap h1 {
+	.gl-count-wrapper h1 {
 		margin: 0px;
 		font-size: 4em;
 		font-family: 'Riffic', sans-serif;
 	}
 
-	.globalCountWrap p {
+	.gl-count-wrapper p {
 		margin: 0px;
         font-size: 2em;
 		font-family: 'Riffic', sans-serif;

@@ -53,7 +53,11 @@
         text-decoration: none;
         border: none;
         border-radius: 6px;
-        cursor:pointer;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #db005c;
     }
 
  
