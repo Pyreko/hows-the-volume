@@ -4,7 +4,6 @@
 	const dispatch = createEventDispatcher();
 
 	function openInfoModal() {
-		console.log('sending...');
 		dispatch('message');
 	}
 </script>

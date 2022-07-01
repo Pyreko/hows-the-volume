@@ -24,7 +24,7 @@
 					clickOpacity.set(currentVal);
 				}
 			}, 50);
-		}, 10 * 1000);
+		}, 5 * 1000);
 
 		clickOpacity.update((c) => {
 			const newVal = c + 0.25;

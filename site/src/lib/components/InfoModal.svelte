@@ -22,7 +22,7 @@
 			<div class="text-block">
 				<h1>What is this?</h1>
 				<p>
-					This is a little site dedicated to <a
+					This is just a little site dedicated to <a
 						href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g">IRyS</a
 					>, one of Hololive's resident <strike>pons</strike> VSingers!
 				</p>
@@ -43,6 +43,22 @@
 			<div class="text-block">
 				<h1>Credits</h1>
 				<p>Lots of stuff was used or referred to in order to make this site:</p>
+				<ul>
+					<li>
+						<p>
+							<a href="https://twitter.com/chrone_co/status/1426878310328332292"
+								>Chroneco's emotes and tweet</a
+							> were used for the favicon and inspiration for theming.
+						</p>
+					</li>
+					<li>
+						<p>
+							The font used throughout is <a
+								href="https://www.fontspring.com/fonts/inky-type/riffic">Riffic Free Bold</a
+							>.
+						</p>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -115,7 +131,8 @@
 	}
 
 	.text-block p,
-	.text-block a {
+	.text-block a,
+	.text-block ul {
 		font-size: medium;
 		margin: 0px;
 	}

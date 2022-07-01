@@ -2,13 +2,13 @@
 	import GlobalCounter from '$lib/components/GlobalCounter.svelte';
 	import Counter from '$lib/components/Counter.svelte';
 	import Button from '$lib/components/Button.svelte';
-	import Info from '$lib/components/Info.svelte';
+	import InfoButton from '$lib/components/InfoButton.svelte';
 	import InfoModal from '$lib/components/InfoModal.svelte';
 	import Ehe from '$lib/components/Ehe.svelte';
+	import Iwys from '$lib/components/Iwys.svelte';
 
 	function openInfoModal() {
 		const modalBackground = document.getElementById('modal-background');
-		console.log(modalBackground);
 		if (modalBackground != null) {
 			modalBackground.style.display = 'flex';
 		}
@@ -16,7 +16,7 @@
 </script>
 
 <div class="info-wrapper">
-	<Info on:message={openInfoModal} />
+	<InfoButton on:message={openInfoModal} />
 </div>
 
 <InfoModal />
@@ -26,6 +26,7 @@
 	<GlobalCounter />
 	<Counter />
 	<Button />
+	<Iwys />
 </div>
 
 <style>
@@ -48,5 +49,6 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		gap: 0.5rem;
 	}
 </style>
