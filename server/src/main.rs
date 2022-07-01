@@ -49,9 +49,9 @@ async fn main() {
         .route("/sound/:id", get(sound))
         .route("/count", get(count))
         .route("/increment", post(increment))
-        .fallback(not_found_handler.into_service())
         .layer(cors)
-        .layer(Extension(pool_rc.clone()));
+        .layer(Extension(pool_rc.clone()))
+        .fallback(not_found_handler.into_service());
 
     let addr = "127.0.0.1:8080".parse().unwrap();
 

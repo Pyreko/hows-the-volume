@@ -46,18 +46,34 @@ export const incrementGlobalCount = async () => {
 	await fetch(`${API_URL}/increment`, { method: 'POST' });
 };
 
+const calculateIncrement = (diff: number) => {
+	return Math.max(1, 10 ** Math.floor(Math.log10(diff)));
+};
+
+let timer: undefined | ReturnType<typeof setInterval> = undefined;
 export const globalCount = writable(0, (set) => {
 	const interval = setInterval(async () => {
 		const newVal = await getGlobalCount();
 
 		// Some ugly code to make a pretty count-up.
 		let currentVal = get(globalCount);
-		const timer = setInterval(() => {
+		let increment = calculateIncrement(newVal - currentVal);
+		if (timer !== undefined) {
+			clearInterval(timer);
+		}
+
+		timer = setInterval(() => {
 			if (currentVal >= newVal) {
 				clearInterval(timer);
 			} else {
-				currentVal += 1;
-				set(currentVal);
+				const diff = newVal - currentVal;
+				if (diff < increment) {
+					increment = calculateIncrement(diff);
+					console.log(`increment: ${increment}`);
+				}
+
+				currentVal += increment;
+				set(Math.min(currentVal, newVal));
 			}
 		}, 10);
 	}, 20 * 1000);
