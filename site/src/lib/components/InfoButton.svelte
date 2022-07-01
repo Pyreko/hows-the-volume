@@ -14,7 +14,7 @@
 	button {
 		background-color: #ea88af;
 		color: white;
-		font-size: medium;
+		font-size: 16px;
 		font-family: 'Riffic', sans-serif;
 		width: 25px;
 		height: 25px;
@@ -22,6 +22,7 @@
 		border-radius: 50%;
 		cursor: pointer;
 		text-align: center;
+		line-height: 16px;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
