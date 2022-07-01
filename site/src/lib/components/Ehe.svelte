@@ -10,11 +10,12 @@
 	div {
 		z-index: -1;
 		position: absolute;
-		bottom: -10px;
 		left: 0;
+		bottom: 0;
 	}
 
 	img {
+		vertical-align: middle;
 		width: 50%;
 		object-fit: contain;
 	}

@@ -22,9 +22,11 @@
 			<div class="text-block">
 				<h1>What is this?</h1>
 				<p>
-					This is just a little site dedicated to <a
-						href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g">IRyS</a
-					>, one of Hololive's resident <strike>pons</strike> VSingers!
+					This is a site for <a href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g"
+						>IRyS</a
+					>, one of Hololive's resident <strike>pons</strike> VSingers! Inspired by
+					<a href="https://impomu.com/">impomu</a>
+					and <a href="https://faunaraara.com/">faunaraara</a>.
 				</p>
 				<p>
 					For those interested in the source code for both the site and server, it can be found <a
@@ -87,20 +89,20 @@
 	.close {
 		font-family: 'Riffic', sans-serif;
 		position: absolute;
-		width: 16px;
-		height: 16px;
+		width: 18px;
+		height: 18px;
 		top: 0;
 		right: 0;
 		margin-top: 12px;
 		margin-right: 10px;
 		background-color: transparent;
 		border: 0;
-		font-size: 16px;
-		color: grey;
+		font-size: 18px;
+		color: darkgray;
 	}
 
 	.close:hover {
-		color: darkgray;
+		color: gray;
 	}
 
 	.modal-body {
