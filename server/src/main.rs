@@ -3,7 +3,7 @@ use std::{env, sync::Arc};
 use axum::{
     body::Body,
     extract::{rejection::PathRejection, Path},
-    http::{Method, Request, StatusCode},
+    http::{HeaderValue, Method, Request, StatusCode},
     response::{IntoResponse, Response},
     routing::{get, post},
     Extension, Json, Router,
@@ -12,10 +12,7 @@ use dotenv::dotenv;
 use serde::Serialize;
 use sqlx::{Pool, Sqlite, SqlitePool};
 use tower::util::ServiceExt;
-use tower_http::{
-    cors::{self, CorsLayer},
-    services::ServeDir,
-};
+use tower_http::{cors::CorsLayer, services::ServeDir};
 use tracing::{info, warn};
 use tracing_subscriber::filter::EnvFilter;
 
@@ -39,9 +36,13 @@ async fn main() {
 
     let pool_rc = Arc::new(pool);
 
+    let origins = [
+        "http://localhost:3000".parse::<HeaderValue>().unwrap(),
+        "https://howsthevolu.me".parse::<HeaderValue>().unwrap(),
+    ];
     let cors = CorsLayer::new()
         .allow_methods(vec![Method::GET, Method::POST])
-        .allow_origin(cors::Any); // FIXME: For now.
+        .allow_origin(origins);
 
     let app = Router::new()
         .route("/sound/:id", get(sound))

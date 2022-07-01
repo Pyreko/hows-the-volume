@@ -2,6 +2,8 @@
 
 ...I don't know what spurred me to do this. Frontend written in Svelte, backend in Rust + axum.
 
+BTW I'm well aware the repo history is, uh, kinda messy. Was in a bit of a rush to finish this.
+
 ## Credits
 
 - Favicon is one of [Chroneco's emotes for IRyS](https://twitter.com/chrone_co/status/1426878310328332292).
