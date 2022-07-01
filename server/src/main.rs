@@ -16,13 +16,23 @@ use tower_http::{
     cors::{self, CorsLayer},
     services::ServeDir,
 };
-use tracing::info;
+use tracing::{info, warn};
+use tracing_subscriber::filter::EnvFilter;
 
 #[tokio::main]
 async fn main() {
-    tracing_subscriber::fmt::init();
     dotenv().ok().unwrap();
 
+    let file_appender = tracing_appender::rolling::daily("./", "volume.log");
+    let (non_blocking, _guard) = tracing_appender::non_blocking(file_appender);
+
+    tracing_subscriber::fmt()
+        .with_env_filter(EnvFilter::from_default_env())
+        .with_writer(non_blocking)
+        .with_ansi(false)
+        .init();
+
+    info!("Starting up...");
     let pool = SqlitePool::connect(&env::var("DATABASE_URL").unwrap())
         .await
         .unwrap();
@@ -40,7 +50,7 @@ async fn main() {
         .layer(cors)
         .layer(Extension(pool_rc.clone()));
 
-    let addr = "0.0.0.0:8080".parse().unwrap();
+    let addr = "127.0.0.1:8080".parse().unwrap();
 
     info!("Listening on {}", addr);
     axum::Server::bind(&addr)
@@ -73,15 +83,24 @@ impl Count {
 
 /// Returns the current global count, stored in the DB.
 async fn count(Extension(pool): Extension<PoolExt>) -> Json<Count> {
-    let mut conn = pool.acquire().await.unwrap();
-
-    let count = sqlx::query!("SELECT count FROM counts WHERE name = 'volume'")
-        .fetch_one(&mut conn)
-        .await
-        .unwrap()
-        .count as u64;
-
-    Json(Count::new(count))
+    match pool.acquire().await {
+        Ok(mut conn) => {
+            match sqlx::query!("SELECT count FROM counts WHERE name = 'volume'")
+                .fetch_one(&mut conn)
+                .await
+            {
+                Ok(query) => Json(Count::new(query.count as u64)),
+                Err(err) => {
+                    warn!("SQLite query for count failed - err: {}", err);
+                    Json(Count::new(0))
+                }
+            }
+        }
+        Err(err) => {
+            warn!("Failed to get pool connection to SQLite DB - err: {}", err);
+            Json(Count::new(0))
+        }
+    }
 }
 
 /// Returns the selected sound file if it exists.
@@ -91,24 +110,33 @@ async fn sound(id_result: Result<Path<u32>, PathRejection>) -> Response {
         const SUFFIX: &str = ".mp3";
 
         let uri = format!("/{}{:0>2}{}", PREFIX, id, SUFFIX);
-        let req = Request::builder().uri(uri).body(Body::empty()).unwrap();
-
-        ServeDir::new("assets/")
-            .oneshot(req)
-            .await
-            .unwrap()
-            .into_response()
-    } else {
-        StatusCode::NOT_FOUND.into_response()
+        match Request::builder().uri(&uri).body(Body::empty()) {
+            Ok(req) => match ServeDir::new("assets/").oneshot(req).await {
+                Ok(resp) => return resp.into_response(),
+                Err(err) => {
+                    warn!("Failed to get a response for file {} - err: {}", uri, err);
+                }
+            },
+            Err(err) => {
+                warn!("Failed to build a request for file {} - err: {}", uri, err);
+            }
+        }
     }
+
+    StatusCode::NOT_FOUND.into_response()
 }
 
 /// Increments the count.
 async fn increment(Extension(pool): Extension<PoolExt>) {
     let mut conn = pool.acquire().await.unwrap();
 
-    sqlx::query!("UPDATE counts SET count = count + 1 WHERE name = 'volume'")
+    match sqlx::query!("UPDATE counts SET count = count + 1 WHERE name = 'volume'")
         .execute(&mut conn)
         .await
-        .unwrap();
+    {
+        Ok(_) => {}
+        Err(err) => {
+            warn!("Failed to increment in DB - err: {}", err);
+        }
+    }
 }
