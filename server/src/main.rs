@@ -41,15 +41,12 @@ async fn main() {
 
     let cors = CorsLayer::new()
         .allow_methods(vec![Method::GET, Method::POST])
-        .allow_origin(cors::Any); // FIXME: For now.
-
-    let api = Router::new()
-        .route("/sound/:id", get(sound))
-        .route("/count", get(count))
-        .route("/increment", post(increment));
+        .allow_origin(cors::Any);    // FIXME: For now.
 
     let app = Router::new()
-        .nest("/api", api)
+        .route("/sound/:id", get(sound))
+        .route("/count", get(count))
+        .route("/increment", post(increment))
         .layer(cors)
         .layer(Extension(pool_rc.clone()));
 
