@@ -75,6 +75,10 @@ async fn main() {
 struct EmptyJson {}
 
 async fn not_found_handler() -> impl IntoResponse {
+    not_found()
+}
+
+fn not_found() -> (StatusCode, Json<EmptyJson>) {
     (StatusCode::NOT_FOUND, Json(EmptyJson {}))
 }
 
@@ -137,7 +141,7 @@ async fn sound(id_result: Result<Path<u32>, PathRejection>) -> Response {
         }
     }
 
-    (StatusCode::NOT_FOUND, Json(EmptyJson {})).into_response()
+    not_found().into_response()
 }
 
 /// Increments the count.
