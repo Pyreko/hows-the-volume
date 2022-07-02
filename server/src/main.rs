@@ -71,8 +71,11 @@ async fn main() {
     info!("Shutting down server.");
 }
 
+#[derive(Serialize)]
+struct EmptyJson {}
+
 async fn not_found_handler() -> impl IntoResponse {
-    StatusCode::NOT_FOUND
+    (StatusCode::NOT_FOUND, Json(EmptyJson {}))
 }
 
 type PoolExt = Arc<Pool<Sqlite>>;
@@ -119,7 +122,11 @@ async fn sound(id_result: Result<Path<u32>, PathRejection>) -> Response {
         let uri = format!("/{}{:0>2}{}", PREFIX, id, SUFFIX);
         match Request::builder().uri(&uri).body(Body::empty()) {
             Ok(req) => match ServeDir::new("assets/").oneshot(req).await {
-                Ok(resp) => return resp.into_response(),
+                Ok(resp) => {
+                    if resp.status() == StatusCode::OK {
+                        return resp.into_response();
+                    }
+                }
                 Err(err) => {
                     warn!("Failed to get a response for file {} - err: {}", uri, err);
                 }
@@ -130,7 +137,7 @@ async fn sound(id_result: Result<Path<u32>, PathRejection>) -> Response {
         }
     }
 
-    StatusCode::NOT_FOUND.into_response()
+    (StatusCode::NOT_FOUND, Json(EmptyJson {})).into_response()
 }
 
 /// Increments the count.
