@@ -39,7 +39,7 @@
 			<div class="text-block">
 				<h1>Where's the volume?</h1>
 				<p>
-					All voice clips and their sources can also be found in the <a
+					All voice clips (and their sources when I get around to it) can also be found in the <a
 						href="https://github.com/Pyreko/hows-the-volume/tree/main/server/assets"
 						target="_blank">GitHub repo</a
 					>.
@@ -78,6 +78,15 @@
 					</li>
 				</ul>
 			</div>
+			<div class="text-block">
+				<h1>Something not working?</h1>
+				<p>
+					If you find something not working, please report it <a
+						href="https://github.com/Pyreko/hows-the-volume/issues"
+						target="_blank">here</a
+					>!
+				</p>
+			</div>
 		</div>
 	</div>
 </div>
@@ -99,7 +108,7 @@
 
 	.modal-wrapper {
 		width: 1000px;
-		max-width: 100%;
+		max-width: 95%;
 		height: auto;
 		max-height: 100%;
 		position: relative;
