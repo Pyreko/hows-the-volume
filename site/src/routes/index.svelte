@@ -12,11 +12,14 @@
 		.then((val) => globalCount.set(val))
 		.catch(() => globalCount.set(0));
 
+	let modalVisible = false;
+
 	function openInfoModal() {
-		const modalBackground = document.getElementById('modal-background');
-		if (modalBackground != null) {
-			modalBackground.style.display = 'flex';
-		}
+		modalVisible = true;
+	}
+
+	function closeInfoModal() {
+		modalVisible = false;
 	}
 </script>
 
@@ -24,7 +27,9 @@
 	<InfoButton on:message={openInfoModal} />
 </div>
 
-<InfoModal />
+{#if modalVisible}
+	<InfoModal on:message={closeInfoModal} />
+{/if}
 <Ehe />
 
 <div class="box">

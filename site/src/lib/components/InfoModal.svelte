@@ -1,9 +1,10 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 	function closeInfoModal() {
-		const modalBackground = document.getElementById('modal-background');
-		if (modalBackground != null) {
-			modalBackground.style.display = 'none';
-		}
+		dispatch('message');
 	}
 
 	function onKeyPress(event: KeyboardEvent) {
@@ -15,7 +16,7 @@
 
 <svelte:window on:keydown={onKeyPress} />
 
-<div id="modal-background" on:click={closeInfoModal}>
+<div id="modal-background" on:click={closeInfoModal} transition:fade={{ duration: 100 }}>
 	<div class="modal-wrapper">
 		<div class="modal-body" on:click|stopPropagation>
 			<button class="close" on:click={closeInfoModal}>✕</button>
@@ -93,7 +94,7 @@
 
 <style>
 	#modal-background {
-		display: none;
+		display: flex;
 		position: fixed;
 		z-index: 1;
 		left: 0;
