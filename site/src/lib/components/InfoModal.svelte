@@ -108,7 +108,7 @@
 	}
 
 	.modal-wrapper {
-		width: 1000px;
+		width: 900px;
 		max-width: 95%;
 		height: auto;
 		max-height: 100%;
