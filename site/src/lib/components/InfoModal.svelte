@@ -128,6 +128,7 @@
 		border: 0;
 		font-size: 18px;
 		color: darkgray;
+		cursor: pointer;
 	}
 
 	.close:hover {
