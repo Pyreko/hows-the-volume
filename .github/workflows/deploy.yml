@@ -1,4 +1,4 @@
-name: deploy
+name: check-and-deploy
 
 on:
   workflow_dispatch:
@@ -14,9 +14,21 @@ jobs:
   ci:
     uses: ./.github/workflows/ci.yml
 
+  pre-deploy:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v4.0.0
+        with:
+          paths_ignore: '["**/README.md", "server/**", "LICENSE"]'
+          do_not_skip: '["workflow_dispatch"]'
+
   deploy:
     name: "Deploy static page"
-    needs: ci
+    needs: [ci, pre-deploy]
+    if: ${{ needs.pre_job.outputs.should_skip != 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
