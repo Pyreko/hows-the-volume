@@ -1,4 +1,6 @@
 #!/bin/bash
 
 pkill hows-the-volume
-nohup ./target/release/hows-the-volume-server > /dev/null 2>&1 &
+mkdir -p ~/htv-server
+cp ./target/release/hows-the-volume-server ~/htv-server/hows-the-volume-server
+nohup ~/htv-server/hows-the-volume-server &
