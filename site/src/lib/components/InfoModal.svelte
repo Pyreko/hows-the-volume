@@ -40,9 +40,9 @@
 			<div class="text-block">
 				<h1>Where's the volume?</h1>
 				<p>
-					All voice clips (and their sources when I get around to it) can also be found in the <a
-						href="https://github.com/Pyreko/hows-the-volume/tree/main/server/assets"
-						target="_blank">GitHub repo</a
+					All voice clips and their sources can also be found in the <a
+						href="https://github.com/Pyreko/hows-the-volume/tree/main/server/assets/README.md"
+						target="_blank">here</a
 					>.
 				</p>
 			</div>

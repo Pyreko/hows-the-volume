@@ -74,7 +74,7 @@ export const globalCount = writable(0, (set) => {
 				currentVal += increment;
 				set(Math.min(currentVal, newVal));
 			}
-		}, 10);
+		}, 20);
 	}, 20 * 1000);
 
 	return () => {

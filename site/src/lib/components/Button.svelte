@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { clickOpacity, localCount, incrementGlobalCount, API_URL } from '$lib/store';
 
+	const NUM_AUDIO_TRACKS = 25;
 	let clickTimeout: undefined | ReturnType<typeof setTimeout> = undefined;
 	let clickTimer: undefined | ReturnType<typeof setInterval> = undefined;
 
@@ -45,7 +46,7 @@
 		onIncrement();
 
 		// Get the audio track from the server...
-		const audioTrack = randomInt(6);
+		const audioTrack = randomInt(NUM_AUDIO_TRACKS - 1);
 		const audio = new Audio();
 		audio.crossOrigin = 'anonymous';
 		audio.src = `${API_URL}/sound/${audioTrack}`;
