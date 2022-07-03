@@ -56,6 +56,14 @@ async fn main() {
     let addr = "127.0.0.1:8080".parse().unwrap();
 
     info!("Listening on {}", addr);
+
+    if std::path::Path::new("assets/").exists() {
+        let num_files = std::fs::read_dir("assets/").unwrap().count();
+        info!("Found {} files in assets!", num_files);
+    } else {
+        warn!("Warning - no asset/ folder found! There should be one located near the binary!");
+    }
+
     axum::Server::bind(&addr)
         .serve(app.into_make_service())
         .with_graceful_shutdown(async {
