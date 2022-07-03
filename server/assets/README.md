@@ -1,6 +1,6 @@
 # Assets
 
-Sources for every voice clip:
+Sources for every voice clip (thanks to various people for helping me find these):
 
 - [`volume_00.mp3`](https://youtu.be/sAH9WAza_kI?t=681)
 - [`volume_01.mp3`](https://youtu.be/sAH9WAza_kI?t=681)
@@ -20,3 +20,10 @@ Sources for every voice clip:
 - [`volume_15.mp3`](https://youtu.be/v7JnN0YBWD0?t=601)
 - [`volume_16.mp3`](https://youtu.be/Z2IwcJxNk-c?t=596)
 - [`volume_17.mp3`](https://youtu.be/TdYFeuMXkLc?t=5698)
+- [`volume_18.mp3`](https://youtu.be/PTmb3LaR15g?t=518)
+- [`volume_19.mp3`](https://youtu.be/PTmb3LaR15g?t=544)
+- [`volume_20.mp3`](https://youtu.be/mbSezLioaTc?t=1369)
+- [`volume_21.mp3`](https://youtu.be/mbSezLioaTc?t=1378)
+- [`volume_22.mp3`](https://youtu.be/2Y5uFZllX8o?t=525)
+- [`volume_23.mp3`](https://youtu.be/UdDZ1MR1omA?t=1624)
+- [`volume_24.mp3`](https://youtu.be/ij9XQH-0Hl0?t=1602)
