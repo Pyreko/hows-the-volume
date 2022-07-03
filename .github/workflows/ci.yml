@@ -39,6 +39,8 @@ jobs:
 
       - name: Enable Rust cache
         uses: Swatinem/rust-cache@v1.4.0
+        with:
+          working-directory: "server/"
 
       - name: Run cargo fmt
         run: |
