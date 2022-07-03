@@ -46,7 +46,7 @@
 		onIncrement();
 
 		// Get the audio track from the server...
-		const audioTrack = randomInt(NUM_AUDIO_TRACKS - 1);
+		const audioTrack = randomInt(NUM_AUDIO_TRACKS - 1); // Yeah ik it's -1 + 1.
 		const audio = new Audio();
 		audio.crossOrigin = 'anonymous';
 		audio.src = `${API_URL}/sound/${audioTrack}`;
