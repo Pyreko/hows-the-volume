@@ -17,16 +17,20 @@
 <svelte:window on:keydown={onKeyPress} />
 
 <div id="modal-background" on:click={closeInfoModal} transition:fade={{ duration: 100 }}>
-	<div class="modal-wrapper">
-		<div class="modal-body" on:click|stopPropagation>
+	<div class="modal-wrapper" on:click|stopPropagation>
+		<div class="modal-header">
+			<h1>About</h1>
 			<button class="close" on:click={closeInfoModal}>✕</button>
+		</div>
+		<div class="modal-body">
 			<div class="text-block">
 				<h1>What is this?</h1>
 				<p>
 					This is a site for <a
 						href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g"
 						target="_blank">IRyS</a
-					>, one of Hololive's resident <strike>pons</strike> VSingers! Inspired by
+					>, one of Hololive's resident <strike>pons</strike> VSingers and our favourite lovable
+					nephilim! Premise inspired by
 					<a href="https://impomu.com/" target="_blank">impomu</a>
 					and <a href="https://faunaraara.com/" target="_blank">faunaraara</a>.
 				</p>
@@ -48,7 +52,10 @@
 			</div>
 			<div class="text-block">
 				<h1>Credits</h1>
-				<p>Lots of stuff was used or referred to in order to make this site:</p>
+				<p>
+					I couldn't have done this alone! Lots of stuff was used or referred to in order to make
+					this site:
+				</p>
 				<ul>
 					<li>
 						<p>
@@ -77,6 +84,9 @@
 							<a href="https://github.com/tokio-rs/axum" target="_blank">axum framework</a>.
 						</p>
 					</li>
+					<li>
+						<p>Various people for helping me find all the voice clips.</p>
+					</li>
 				</ul>
 			</div>
 			<div class="text-block">
@@ -101,35 +111,56 @@
 		top: 0;
 		width: 100%;
 		height: 100%;
-		overflow: auto;
 		background-color: rgba(0, 0, 0, 0.5);
 		justify-content: center;
 		align-items: center;
 	}
 
 	.modal-wrapper {
+		position: relative;
 		width: 900px;
 		max-width: 95%;
 		height: auto;
-		max-height: 100%;
-		position: relative;
-		overflow: visible;
+		max-height: 95%;
+		border: none;
+		border-radius: 6px;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		background-color: white;
+	}
+
+	.modal-header {
+		display: flex;
+		background-color: white;
+		flex-direction: row;
+		border: none;
+		border-bottom-style: solid;
+		border-bottom-width: 2px;
+		border-bottom-color: whitesmoke;
+	}
+
+	.modal-header h1 {
+		font-family: sans-serif;
+		font-size: 28px;
+		flex-grow: 2;
+		padding: 16px 0px 16px 22px;
+		margin: 0;
+		line-height: 28px;
 	}
 
 	.close {
 		font-family: 'Riffic', sans-serif;
-		position: absolute;
 		width: 18px;
 		height: 18px;
-		top: 0;
-		right: 0;
-		margin-top: 2px;
-		margin-right: 10px;
 		background-color: transparent;
 		border: 0;
 		font-size: 18px;
 		color: darkgray;
 		cursor: pointer;
+		margin-right: 8px;
+		margin-top: 4px;
+		padding: 0;
 	}
 
 	.close:hover {
@@ -140,11 +171,9 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1.75em;
-		justify-content: center;
-		border: none;
-		border-radius: 6px;
-		padding: 32px 22px;
-		background-color: white;
+		justify-content: start;
+		padding: 12px 22px 26px 22px;
+		overflow-y: auto;
 	}
 
 	.text-block {
