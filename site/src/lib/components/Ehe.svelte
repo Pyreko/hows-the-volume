@@ -8,8 +8,8 @@
 
 <style>
 	div {
-		z-index: -1;
-		position: absolute;
+		z-index: -10;
+		position: fixed;
 		left: 0;
 		bottom: 0;
 	}
