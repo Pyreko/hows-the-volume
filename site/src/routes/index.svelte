@@ -6,7 +6,7 @@
 	import InfoModal from '$lib/components/InfoModal.svelte';
 	import Ehe from '$lib/components/Ehe.svelte';
 	import Iwys from '$lib/components/Iwys.svelte';
-	import { getGlobalCount, globalCount } from '$lib/store';
+	import { clickOpacity, getGlobalCount, globalCount } from '$lib/store';
 
 	getGlobalCount()
 		.then((val) => globalCount.set(val))
@@ -30,7 +30,9 @@
 {#if modalVisible}
 	<InfoModal on:message={closeInfoModal} />
 {/if}
-<Ehe />
+{#if $clickOpacity > 0}
+	<Ehe />
+{/if}
 
 <div class="box">
 	<GlobalCounter />

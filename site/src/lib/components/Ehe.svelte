@@ -3,7 +3,7 @@
 </script>
 
 <div>
-	<img src="/images/ehe.webp" alt="A smug IRyS." style="opacity: {$clickOpacity}%" />
+	<img src="/images/ehe.webp" alt="A smug IRyS." loading="lazy" style="opacity: {$clickOpacity}%" />
 </div>
 
 <style>
