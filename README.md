@@ -11,3 +11,5 @@ BTW I'm well aware the repo history is, uh, kinda messy. Was in a bit of a rush 
 - The fonts used are [Riffic Free Bold](https://www.fontspring.com/fonts/inky-type/riffic).
 - Frontend is written in [Svelte](https://svelte.dev/).
 - Backend is written in [Rust](https://www.rust-lang.org/) and uses the [axum](https://github.com/tokio-rs/axum) framework.
+- Thanks to everyone who helped me find the voice clips in the first place.
+- [impomu](https://impomu.com/) and [faunaraara](https://faunaraara.com/) for inspiration.

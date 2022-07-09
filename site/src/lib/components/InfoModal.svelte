@@ -85,7 +85,14 @@
 						</p>
 					</li>
 					<li>
-						<p>Various people for helping me find all the voice clips.</p>
+						<p>Thanks to various people for helping me find all the voice clips.</p>
+					</li>
+					<li>
+						<p>
+							<a href="https://impomu.com/" target="_blank">impomu</a> and
+							<a href="https://faunaraara.com/" target="_blank">faunaraara</a> for the inspiration in
+							the first place.
+						</p>
 					</li>
 				</ul>
 			</div>
