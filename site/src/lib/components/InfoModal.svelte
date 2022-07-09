@@ -30,9 +30,13 @@
 						href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g"
 						target="_blank">IRyS</a
 					>, one of Hololive's resident <strike>pons</strike> VSingers and our favourite lovable
-					nephilim! Premise inspired by
+					nephilim! The general premise is inspired by
 					<a href="https://impomu.com/" target="_blank">impomu</a>
 					and <a href="https://faunaraara.com/" target="_blank">faunaraara</a>.
+				</p>
+				<p>
+					The original motivation for this website was to celebrate her first anniversary, though I
+					released the site a bit earlier.
 				</p>
 				<p>
 					For those interested in the source code for both the site and server, it can be found <a
