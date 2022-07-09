@@ -6,6 +6,7 @@
 	import InfoModal from '$lib/components/InfoModal.svelte';
 	import Ehe from '$lib/components/Ehe.svelte';
 	import Iwys from '$lib/components/Iwys.svelte';
+	import Anniversrys from '$lib/components/Anniversrys.svelte';
 	import { clickOpacity, getGlobalCount, globalCount } from '$lib/store';
 
 	getGlobalCount()
@@ -21,6 +22,19 @@
 	function closeInfoModal() {
 		modalVisible = false;
 	}
+
+	function isAnniversary(): boolean {
+		function checkDate(date: Date, offset: number): boolean {
+			date.setUTCHours(date.getUTCHours() + offset);
+			return date.getUTCMonth() + 1 == 7 && date.getUTCDate() == 10; // Remember that the months are 0-indexed.
+		}
+
+		return checkDate(new Date(), -12) || checkDate(new Date(), 14);
+	}
+
+	function anniversaryYears(): number {
+		return new Date().getUTCFullYear() - 2021;
+	}
 </script>
 
 <div class="info-wrapper">
@@ -30,11 +44,15 @@
 {#if modalVisible}
 	<InfoModal on:message={closeInfoModal} />
 {/if}
+
 {#if $clickOpacity > 0}
 	<Ehe />
 {/if}
 
 <div class="box">
+	{#if isAnniversary()}
+		<Anniversrys numYears={anniversaryYears()} />
+	{/if}
 	<GlobalCounter />
 	<Counter />
 	<Button />
