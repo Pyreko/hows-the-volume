@@ -6,8 +6,8 @@
 	import InfoModal from '$lib/components/InfoModal.svelte';
 	import Ehe from '$lib/components/Ehe.svelte';
 	import Iwys from '$lib/components/Iwys.svelte';
-	import Anniversrys from '$lib/components/Anniversrys.svelte';
 	import { clickOpacity, getGlobalCount, globalCount } from '$lib/store';
+	import Anniversary from '$lib/components/Anniversary.svelte';
 
 	getGlobalCount()
 		.then((val) => globalCount.set(val))
@@ -26,7 +26,7 @@
 	function isAnniversary(): boolean {
 		function checkDate(date: Date, offset: number): boolean {
 			date.setUTCHours(date.getUTCHours() + offset);
-			return date.getUTCMonth() + 1 == 7 && date.getUTCDate() == 10; // Remember that the months are 0-indexed.
+			return date.getUTCMonth() + 1 == 7 && date.getUTCDate() == 11; // Remember that the months are 0-indexed.
 		}
 
 		return checkDate(new Date(), -12) || checkDate(new Date(), 14);
@@ -51,7 +51,7 @@
 
 <div class="box">
 	{#if isAnniversary()}
-		<Anniversrys numYears={anniversaryYears()} showConfetti={$clickOpacity > 0} />
+		<Anniversary numYears={anniversaryYears()} showConfetti={$clickOpacity > 0} />
 	{/if}
 	<GlobalCounter />
 	<Counter />

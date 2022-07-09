@@ -31,7 +31,7 @@
 	{/if}
 	<div class="anni-text-wrapper">
 		<p>Happy</p>
-		<p class="anniversary">Annivers<img alt="rys" src="/images/rys.webp" loading="lazy" />!</p>
+		<p class="anniversary">Anniversa<img alt="rys" src="/images/rys.webp" loading="lazy" />!</p>
 	</div>
 	<p class="anni-sub">Congrats on the {numYears} year anniversary, IRyS!</p>
 </div>
@@ -60,9 +60,9 @@
 	.anni-text-wrapper > p {
 		text-align: center;
 		color: transparent;
-		font-size: 4rem;
+		font-size: 3.5rem;
 		margin: 0;
-		line-height: 5rem;
+		line-height: 4.5rem;
 		background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
 		-webkit-background-clip: text;
 		background-clip: text;
@@ -76,7 +76,7 @@
 
 	.anni-text-wrapper > p > img {
 		vertical-align: middle;
-		width: 5rem;
+		width: 4.5rem;
 		height: 100%;
 	}
 
@@ -85,6 +85,17 @@
 		font-size: large;
 		margin: 0;
 		margin-top: 0.5rem;
+	}
+
+	@media only screen and (min-width: 600px) {
+		.anni-text-wrapper > p {
+			font-size: 4rem;
+			line-height: 5rem;
+		}
+
+		.anni-text-wrapper > p > img {
+			width: 5rem;
+		}
 	}
 
 	.confetti-wrapper {
