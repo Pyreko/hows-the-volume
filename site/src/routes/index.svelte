@@ -51,7 +51,7 @@
 
 <div class="box">
 	{#if isAnniversary()}
-		<Anniversrys numYears={anniversaryYears()} />
+		<Anniversrys numYears={anniversaryYears()} showConfetti={$clickOpacity > 0} />
 	{/if}
 	<GlobalCounter />
 	<Counter />
