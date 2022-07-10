@@ -109,6 +109,9 @@
 					>!
 				</p>
 			</div>
+			<div class="image-block">
+				<img src="/images/heart.webp" alt="heart" loading="lazy" />
+			</div>
 		</div>
 	</div>
 </div>
@@ -206,5 +209,14 @@
 	.text-block ul {
 		font-size: medium;
 		margin: 0px;
+	}
+
+	.image-block {
+		text-align: center;
+	}
+
+	.image-block > img {
+		width: 96px;
+		height: auto;
 	}
 </style>
