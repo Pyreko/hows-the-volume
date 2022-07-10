@@ -89,12 +89,12 @@
 
 	@media only screen and (min-width: 600px) {
 		.anni-text-wrapper > p {
-			font-size: 4rem;
-			line-height: 5rem;
+			font-size: 4.5rem;
+			line-height: 5.5rem;
 		}
 
 		.anni-text-wrapper > p > img {
-			width: 5rem;
+			width: 5.5rem;
 		}
 	}
 
