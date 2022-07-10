@@ -195,7 +195,7 @@
 		margin: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 0.75em;
+		gap: 0.5em;
 	}
 
 	.text-block h1 {
