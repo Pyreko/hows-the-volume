@@ -100,7 +100,7 @@
 
 	.confetti-wrapper {
 		display: none;
-		z-index: -100;
+		z-index: -20;
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
@@ -114,7 +114,7 @@
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
-			z-index: -100;
+			z-index: -20;
 		}
 
 		.confetti {
