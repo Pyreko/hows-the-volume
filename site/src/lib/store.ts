@@ -1,4 +1,4 @@
-import { get, readable, writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 import { dev } from '$app/env';
 
 export const API_URL: string = dev ? 'http://localhost:8080' : 'https://api.howsthevolu.me';

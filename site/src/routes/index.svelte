@@ -8,6 +8,7 @@
 	import Iwys from '$lib/components/Iwys.svelte';
 	import { clickOpacity, getGlobalCount, globalCount } from '$lib/store';
 	import Anniversary from '$lib/components/Anniversary.svelte';
+	import Diamonds from '$lib/components/Diamonds.svelte';
 
 	getGlobalCount()
 		.then((val) => globalCount.set(val))
@@ -37,7 +38,7 @@
 	}
 </script>
 
-<div class="diamonds" />
+<!-- <Diamonds /> -->
 
 <div class="info-wrapper">
 	<InfoButton on:message={openInfoModal} />
@@ -65,16 +66,6 @@
 	:global(body) {
 		background-color: #f6e3f6;
 		margin: 0;
-	}
-
-	.diamonds {
-		position: absolute;
-		z-index: -50;
-		width: 100vw;
-		height: 100vh;
-		background-color: rgba(0, 0, 0, 0.01);
-		-webkit-mask-image: url('/images/diamond.svg');
-		mask-image: url('/images/diamond.svg');
 	}
 
 	.info-wrapper {
