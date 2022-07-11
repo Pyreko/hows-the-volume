@@ -9,6 +9,7 @@
 	import { clickOpacity, getGlobalCount, globalCount } from '$lib/store';
 	import Anniversary from '$lib/components/Anniversary.svelte';
 	import Diamonds from '$lib/components/Diamonds.svelte';
+	import Confetti from '$lib/components/Confetti.svelte';
 
 	getGlobalCount()
 		.then((val) => globalCount.set(val))
@@ -63,10 +64,15 @@
 	<Ehe />
 {/if}
 
+{#if isAnniversary()}
+	<Confetti showConfetti={$clickOpacity > 0} />
+{/if}
+
 <div class="box">
 	{#if isAnniversary()}
-		<Anniversary numYears={anniversaryYears()} showConfetti={$clickOpacity > 0} />
+		<Anniversary numYears={anniversaryYears()} />
 	{/if}
+
 	<GlobalCounter />
 	<Counter />
 	<Button />
@@ -94,6 +100,6 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
-		overflow-y: auto;
+		overflow: auto;
 	}
 </style>

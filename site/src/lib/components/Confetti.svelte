@@ -4,7 +4,11 @@
 	export let showConfetti: boolean;
 
 	function reducedMotion(): boolean {
-		return window.matchMedia(`(prefers-reduced-motion: reduce)`).matches;
+		try {
+			return window.matchMedia(`(prefers-reduced-motion: reduce)`).matches;
+		} catch {
+			return false;
+		}
 	}
 </script>
 
@@ -39,9 +43,9 @@
 		.confetti-wrapper {
 			width: 100vw;
 			height: 100vh;
+			position: fixed;
 			left: 0;
 			top: 0;
-			position: absolute;
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;

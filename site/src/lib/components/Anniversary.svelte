@@ -1,12 +1,8 @@
 <script lang="ts">
-	import Confetti from './Confetti.svelte';
-
 	export let numYears: number;
-	export let showConfetti = false;
 </script>
 
 <div class="celebration-wrapper">
-	<Confetti {showConfetti} />
 	<div class="anni-text-wrapper">
 		<p>Happy</p>
 		<p class="anniversary">Anniversa<img alt="rys" src="/images/rys.webp" loading="lazy" />!</p>
