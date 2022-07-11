@@ -32,11 +32,11 @@
 	.confetti-wrapper {
 		display: none;
 		z-index: -20;
+		overflow: hidden;
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
 		.confetti-wrapper {
-			overflow: hidden;
 			width: 100vw;
 			height: 100vh;
 			left: 0;

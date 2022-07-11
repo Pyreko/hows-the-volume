@@ -18,7 +18,6 @@
 	.celebration-wrapper {
 		margin: 0;
 		margin-bottom: 2.5em;
-		overflow: hidden;
 	}
 
 	.anni-text-wrapper {
