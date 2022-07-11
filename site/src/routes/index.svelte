@@ -25,12 +25,23 @@
 	}
 
 	function isAnniversary(): boolean {
-		function checkDate(date: Date, offset: number): boolean {
+		function adjustDate(date: Date, offset: number) {
 			date.setUTCHours(date.getUTCHours() + offset);
-			return date.getUTCMonth() + 1 == 7 && date.getUTCDate() == 11; // Remember that the months are 0-indexed.
+			console.log(`${date.toUTCString()}`);
+			return date;
 		}
 
-		return checkDate(new Date(), -12) || checkDate(new Date(), 14);
+		const min = adjustDate(new Date(), -12);
+		const max = adjustDate(new Date(), 14);
+
+		const month = 7;
+		const day = 11;
+
+		return (
+			(min.getUTCMonth() + 1 == month || max.getUTCMonth() + 1 == month) &&
+			min.getUTCDate() <= day &&
+			day <= max.getUTCDate()
+		);
 	}
 
 	function anniversaryYears(): number {
