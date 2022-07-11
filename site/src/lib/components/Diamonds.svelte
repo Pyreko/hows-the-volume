@@ -14,7 +14,7 @@
 	.diamonds {
 		width: 100%;
 		height: 100%;
-		background-color: rgba(0, 0, 0, 0.01);
+		background-color: rgba(0, 0, 0, 0.025);
 		-webkit-mask-image: url('/images/diamond.svg');
 		mask-image: url('/images/diamond.svg');
 	}
