@@ -38,7 +38,7 @@
 	}
 </script>
 
-<!-- <Diamonds /> -->
+<Diamonds />
 
 <div class="info-wrapper">
 	<InfoButton on:message={openInfoModal} />
