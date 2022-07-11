@@ -6,7 +6,7 @@
 	.diamonds-wrapper {
 		width: 100vw;
 		height: 100vh;
-		position: absolute;
+		position: fixed;
 		z-index: -50;
 		overflow: hidden;
 	}
