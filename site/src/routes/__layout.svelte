@@ -1,6 +1,5 @@
 <script lang="ts">
-    import '../styles/fonts.css';
+	import '../styles/fonts.css';
 </script>
 
-
-<slot></slot>
+<slot />

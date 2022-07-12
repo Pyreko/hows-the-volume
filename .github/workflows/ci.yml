@@ -26,10 +26,19 @@ jobs:
         with:
           node-version: "16"
 
-      - name: Test building site
+      - name: Run NPM install
         run: |
           cd site
           npm install
+
+      - name: Lint site
+        run: |
+          cd site
+          npm run lint
+
+      - name: Test building site
+        run: |
+          cd site
           npm run build
 
       - name: Set up Rust toolchain
