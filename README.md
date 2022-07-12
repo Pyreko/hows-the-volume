@@ -13,3 +13,4 @@ BTW I'm well aware the repo history is, uh, kinda messy. Was in a bit of a rush 
 - Backend is written in [Rust](https://www.rust-lang.org/) and uses the [axum](https://github.com/tokio-rs/axum) framework.
 - Thanks to everyone who helped me find the voice clips in the first place.
 - [impomu](https://impomu.com/) and [faunaraara](https://faunaraara.com/) for inspiration.
+- Background inspired by IRyS's pattern on her [branding page](https://www.behance.net/gallery/123239061/Virtual-Youtuber-IRyS-Branding/modules/700551439).

@@ -98,6 +98,14 @@
 							the first place.
 						</p>
 					</li>
+					<li>
+						<p>
+							Background pattern inspired by IRyS's patterns from her <a
+								href="https://www.behance.net/gallery/123239061/Virtual-Youtuber-IRyS-Branding/modules/700551439"
+								>branding page</a
+							>.
+						</p>
+					</li>
 				</ul>
 			</div>
 			<div class="text-block">
