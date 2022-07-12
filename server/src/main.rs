@@ -14,7 +14,7 @@ use serde::Serialize;
 use sqlx::{Pool, Sqlite, SqlitePool};
 use tower::util::ServiceExt;
 use tower_http::{cors::CorsLayer, services::ServeDir};
-use tracing::{info, warn};
+use tracing::{error, info, warn};
 use tracing_subscriber::filter::EnvFilter;
 
 #[tokio::main]
@@ -61,7 +61,7 @@ async fn main() {
         let num_files = std::fs::read_dir("assets/").unwrap().count();
         info!("Found {} files in assets!", num_files);
     } else {
-        warn!("Warning - no asset/ folder found! There should be one located near the binary!");
+        error!("Warning - no asset/ folder found! There should be one located near the binary!");
     }
 
     axum::Server::bind(&addr)
@@ -119,7 +119,7 @@ async fn count(Extension(pool): Extension<PoolExt>) -> Json<Count> {
             }
         }
         Err(err) => {
-            warn!("Failed to get pool connection to SQLite DB - err: {}", err);
+            error!("Failed to get pool connection to SQLite DB - err: {}", err);
             Json(Count::new(0))
         }
     }
@@ -140,11 +140,11 @@ async fn sound(id_result: Result<Path<u32>, PathRejection>) -> Response {
                     }
                 }
                 Err(err) => {
-                    warn!("Failed to get a response for file {} - err: {}", uri, err);
+                    error!("Failed to get a response for file {} - err: {}", uri, err);
                 }
             },
             Err(err) => {
-                warn!("Failed to build a request for file {} - err: {}", uri, err);
+                error!("Failed to build a request for file {} - err: {}", uri, err);
             }
         }
     }
@@ -162,7 +162,7 @@ async fn increment(Extension(pool): Extension<PoolExt>) {
     {
         Ok(_) => {}
         Err(err) => {
-            warn!("Failed to increment in DB - err: {}", err);
+            error!("Failed to increment in DB - err: {}", err);
         }
     }
 }
