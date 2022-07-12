@@ -28,7 +28,6 @@
 	function isAnniversary(): boolean {
 		function adjustDate(date: Date, offset: number) {
 			date.setUTCHours(date.getUTCHours() + offset);
-			console.log(`${date.toUTCString()}`);
 			return date;
 		}
 
