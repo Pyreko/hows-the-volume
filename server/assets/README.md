@@ -29,3 +29,7 @@ Sources for every voice clip (thanks to various people for helping me find these
 - [`volume_24.mp3`](https://youtu.be/ij9XQH-0Hl0?t=1602)
 - [`volume_25.mp3`](https://youtu.be/u740WgBr39M?t=2870)
 - [`volume_26.mp3`](https://youtu.be/5tjEJqh_Jbg?t=13623)
+- [`volume_27.mp3`](https://youtu.be/_wegDxFSPcM?t=1174)
+- [`volume_28.mp3`](https://youtu.be/_wegDxFSPcM?t=1187)
+- [`volume_29.mp3`](https://youtu.be/_wegDxFSPcM?t=1191)
+- [`volume_30.mp3`](https://youtu.be/_wegDxFSPcM?t=1195)
