@@ -10,6 +10,7 @@
 	import Anniversary from '$lib/components/Anniversary.svelte';
 	import Diamonds from '$lib/components/Diamonds.svelte';
 	import Confetti from '$lib/components/Confetti.svelte';
+	import Birthday from '$lib/components/Birthday.svelte';
 
 	getGlobalCount()
 		.then((val) => globalCount.set(val))
@@ -25,7 +26,7 @@
 		modalVisible = false;
 	}
 
-	function isAnniversary(): boolean {
+	function isSpecialDay(month: number, day: number): boolean {
 		function adjustDate(date: Date, offset: number) {
 			date.setUTCHours(date.getUTCHours() + offset);
 			return date;
@@ -34,9 +35,6 @@
 		const min = adjustDate(new Date(), -12);
 		const max = adjustDate(new Date(), 14);
 
-		const month = 7;
-		const day = 11;
-
 		return (
 			(min.getUTCMonth() + 1 == month || max.getUTCMonth() + 1 == month) &&
 			min.getUTCDate() <= day &&
@@ -44,8 +42,20 @@
 		);
 	}
 
+	function isAnniversary(): boolean {
+		return isSpecialDay(7, 11);
+	}
+
 	function anniversaryYears(): number {
 		return new Date().getUTCFullYear() - 2021;
+	}
+
+	function isBirthday(): boolean {
+		return isSpecialDay(3, 7);
+	}
+
+	function shouldShowConfetti(): boolean {
+		return isAnniversary() || isBirthday();
 	}
 </script>
 
@@ -63,13 +73,17 @@
 	<Ehe />
 {/if}
 
-{#if isAnniversary()}
+{#if shouldShowConfetti()}
 	<Confetti showConfetti={$clickOpacity > 0} />
 {/if}
 
 <div class="box">
 	{#if isAnniversary()}
 		<Anniversary numYears={anniversaryYears()} />
+	{/if}
+
+	{#if isBirthday()}
+		<Birthday />
 	{/if}
 
 	<GlobalCounter />
