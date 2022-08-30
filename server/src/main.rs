@@ -86,8 +86,8 @@ async fn not_found_handler() -> impl IntoResponse {
     not_found()
 }
 
-fn not_found() -> (StatusCode, Json<EmptyJson>) {
-    (StatusCode::NOT_FOUND, Json(EmptyJson {}))
+fn not_found() -> StatusCode {
+    StatusCode::NOT_FOUND
 }
 
 type PoolExt = Arc<Pool<Sqlite>>;
