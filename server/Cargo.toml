@@ -3,6 +3,9 @@ name = "hows-the-volume-server"
 version = "0.1.0"
 edition = "2021"
 
+[profile.release]
+strip = "symbols"
+
 [dependencies]
 axum = "0.5.10" # The webapp framework of choice.
 dotenv = "0.15.0" # For accessing env vars stored in .env
