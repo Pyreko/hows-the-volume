@@ -28,11 +28,14 @@
 				<p>
 					This is a site for <a
 						href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g"
-						target="_blank">IRyS</a
+						target="_blank"
+						rel="noopener noreferrer">IRyS</a
 					>, one of Hololive's resident <strike>pons</strike> VSingers and our favourite lovable
 					nephilim! The general premise is inspired by
-					<a href="https://impomu.com/" target="_blank">impomu</a>
-					and <a href="https://faunaraara.com/" target="_blank">faunaraara</a>.
+					<a href="https://impomu.com/" target="_blank" rel="noopener noreferrer">impomu</a>
+					and
+					<a href="https://faunaraara.com/" target="_blank" rel="noopener noreferrer">faunaraara</a
+					>.
 				</p>
 				<p>
 					The original motivation for this website was to celebrate her first anniversary, though I
@@ -41,7 +44,8 @@
 				<p>
 					For those interested in the source code for both the site and server, it can be found <a
 						href="https://github.com/Pyreko/hows-the-volume"
-						target="_blank">over here on GitHub</a
+						target="_blank"
+						rel="noopener noreferrer">over here on GitHub</a
 					>.
 				</p>
 			</div>
@@ -50,7 +54,8 @@
 				<p>
 					All voice clips and their sources can also be found in the <a
 						href="https://github.com/Pyreko/hows-the-volume/tree/main/server/assets/README.md"
-						target="_blank">here</a
+						target="_blank"
+						rel="noopener noreferrer">here</a
 					>.
 				</p>
 			</div>
@@ -63,8 +68,10 @@
 				<ul>
 					<li>
 						<p>
-							<a href="https://twitter.com/chrone_co/status/1426878310328332292" target="_blank"
-								>Chroneco's emotes and tweet</a
+							<a
+								href="https://twitter.com/chrone_co/status/1426878310328332292"
+								target="_blank"
+								rel="noopener noreferrer">Chroneco's emotes and tweet</a
 							> were used for the favicon, some elements, and inspiration for theming.
 						</p>
 					</li>
@@ -72,20 +79,30 @@
 						<p>
 							The font used throughout is <a
 								href="https://www.fontspring.com/fonts/inky-type/riffic"
-								target="_blank">Riffic Free Bold</a
+								target="_blank"
+								rel="noopener noreferrer">Riffic Free Bold</a
 							>.
 						</p>
 					</li>
 					<li>
 						<p>
-							The frontend is written in <a href="https://svelte.dev/" target="_blank">Svelte</a>.
+							The frontend is written in <a
+								href="https://svelte.dev/"
+								target="_blank"
+								rel="noopener noreferrer">Svelte</a
+							>.
 						</p>
 					</li>
 					<li>
 						<p>
-							The backend is written in <a href="https://www.rust-lang.org/" target="_blank">Rust</a
+							The backend is written in <a
+								href="https://www.rust-lang.org/"
+								target="_blank"
+								rel="noopener noreferrer">Rust</a
 							>, using the
-							<a href="https://github.com/tokio-rs/axum" target="_blank">axum framework</a>.
+							<a href="https://github.com/tokio-rs/axum" target="_blank" rel="noopener noreferrer"
+								>axum framework</a
+							>.
 						</p>
 					</li>
 					<li>
@@ -93,9 +110,10 @@
 					</li>
 					<li>
 						<p>
-							<a href="https://impomu.com/" target="_blank">impomu</a> and
-							<a href="https://faunaraara.com/" target="_blank">faunaraara</a> for the inspiration in
-							the first place.
+							<a href="https://impomu.com/" target="_blank" rel="noopener noreferrer">impomu</a> and
+							<a href="https://faunaraara.com/" target="_blank" rel="noopener noreferrer"
+								>faunaraara</a
+							> for the inspiration in the first place.
 						</p>
 					</li>
 					<li>
@@ -113,7 +131,8 @@
 				<p>
 					If you find something not working, please report it <a
 						href="https://github.com/Pyreko/hows-the-volume/issues"
-						target="_blank">here</a
+						target="_blank"
+						rel="noopener noreferrer">here</a
 					>!
 				</p>
 			</div>
