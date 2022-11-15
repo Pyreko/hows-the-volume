@@ -16,6 +16,7 @@
 
 <svelte:window on:keydown={onKeyPress} />
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div id="modal-background" on:click={closeInfoModal} transition:fade={{ duration: 100 }}>
 	<div class="modal-wrapper" on:click|stopPropagation>
 		<div class="modal-header">
