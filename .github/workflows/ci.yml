@@ -28,7 +28,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16.15.0
+          node-version: "16"
 
       - name: Run NPM install
         run: |
