@@ -20,7 +20,7 @@ jobs:
       should_skip: ${{ steps.skip_check.outputs.should_skip }}
     steps:
       - id: skip_check
-        uses: fkirc/skip-duplicate-actions@v4.0.0
+        uses: fkirc/skip-duplicate-actions@f11521568414503656a5af807dc3018c012552c4
         with:
           paths_ignore: '["**/README.md", "server/**", "LICENSE"]'
           do_not_skip: '["workflow_dispatch"]'
