@@ -14,7 +14,7 @@
 	p {
 		text-align: center;
 		font-family: 'Riffic', sans-serif;
-		color: #5e0113;
+		color: #46003e;
 		font-size: small;
 		margin-top: 0.5rem;
 	}

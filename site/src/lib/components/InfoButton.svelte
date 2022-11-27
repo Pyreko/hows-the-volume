@@ -12,7 +12,7 @@
 
 <style>
 	button {
-		background-color: #ea88af;
+		background-color: #e10e5a;
 		color: white;
 		font-size: 16px;
 		font-family: 'Riffic', sans-serif;
@@ -30,6 +30,6 @@
 	}
 
 	button:hover {
-		background-color: #de4984;
+		background-color: #a20349;
 	}
 </style>

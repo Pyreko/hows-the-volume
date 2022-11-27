@@ -39,10 +39,6 @@
 					>.
 				</p>
 				<p>
-					The original motivation for this website was to celebrate her first anniversary, though I
-					released the site a bit earlier.
-				</p>
-				<p>
 					For those interested in the source code for both the site and server, it can be found <a
 						href="https://github.com/Pyreko/hows-the-volume"
 						target="_blank"
@@ -53,7 +49,7 @@
 			<div class="text-block">
 				<h1>Where's the volume?</h1>
 				<p>
-					All voice clips and their sources can also be found in the <a
+					All voice clips and their original stream sources can also be found in the <a
 						href="https://github.com/Pyreko/hows-the-volume/tree/main/server/assets/README.md"
 						target="_blank"
 						rel="noopener noreferrer">here</a
@@ -107,7 +103,11 @@
 						</p>
 					</li>
 					<li>
-						<p>Thanks to various people for helping me find all the voice clips.</p>
+						<p>
+							Thanks to various people for helping me find all the voice clips, particularly at <a
+								href="https://discord.gg/irystocrats">IRyS' Stage Fan Discord</a
+							>!
+						</p>
 					</li>
 					<li>
 						<p>
@@ -169,24 +169,24 @@
 		display: flex;
 		flex-direction: column;
 		overflow: hidden;
-		background-color: white;
+		background-color: #f6e3f6;
 	}
 
 	.modal-header {
 		display: flex;
-		background-color: white;
+		background-color: #f6e3f6;
 		flex-direction: row;
 		border: none;
 		border-bottom-style: solid;
 		border-bottom-width: 2px;
-		border-bottom-color: whitesmoke;
+		border-bottom-color: #f3ddf3;
 	}
 
 	.modal-header h1 {
 		font-family: sans-serif;
 		font-size: 28px;
 		flex-grow: 2;
-		padding: 16px 0px 16px 22px;
+		padding: 20px 0px 20px 22px;
 		margin: 0;
 		line-height: 28px;
 	}
