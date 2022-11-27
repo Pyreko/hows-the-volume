@@ -71,7 +71,7 @@
 
 <style>
 	button {
-		background-color: #ff1377;
+		background-color: #e00c59;
 		color: white;
 		font-family: 'Riffic', sans-serif;
 		font-size: medium;
@@ -84,6 +84,6 @@
 	}
 
 	button:hover {
-		background-color: #db005c;
+		background-color: #a20349;
 	}
 </style>

@@ -94,7 +94,7 @@
 
 <style>
 	:global(body) {
-		background-color: #f6e3f6;
+		background-color: #ffe2f9;
 		margin: 0;
 	}
 
