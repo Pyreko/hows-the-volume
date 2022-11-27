@@ -4,7 +4,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import InfoButton from '$lib/components/InfoButton.svelte';
 	import InfoModal from '$lib/components/InfoModal.svelte';
-	import Ehe from '$lib/components/Ehe.svelte';
+	import IrysPic from '$lib/components/IrysPic.svelte';
 	import Iwys from '$lib/components/Iwys.svelte';
 	import { clickOpacity, getGlobalCount, globalCount } from '$lib/store';
 	import Anniversary from '$lib/components/Anniversary.svelte';
@@ -70,7 +70,7 @@
 {/if}
 
 {#if $clickOpacity > 0}
-	<Ehe />
+	<IrysPic />
 {/if}
 
 {#if shouldShowConfetti()}
