@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { clickOpacity, localCount, incrementGlobalCount, API_URL } from '$lib/store';
 
-	const LAST_AUDIO_TRACK_NUM = 33;
+	const LAST_AUDIO_TRACK_NUM = 42;
 	let clickTimeout: undefined | ReturnType<typeof setTimeout> = undefined;
 	let clickTimer: undefined | ReturnType<typeof setInterval> = undefined;
 
