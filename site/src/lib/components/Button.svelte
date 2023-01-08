@@ -1,9 +1,28 @@
 <script lang="ts">
 	import { clickOpacity, localCount, incrementGlobalCount, API_URL } from '$lib/store';
 
-	const LAST_AUDIO_TRACK_NUM = 42;
 	let clickTimeout: undefined | ReturnType<typeof setTimeout> = undefined;
 	let clickTimer: undefined | ReturnType<typeof setInterval> = undefined;
+	let numAudioTracks: undefined | number = undefined;
+
+	const DEFAULT_NUM_AUDIO_TRACKS = 43;
+	const getNumAudioTracks = async (): Promise<number> => {
+		try {
+			const resp = await fetch(`${API_URL}/num-files`);
+
+			if (resp.ok) {
+				const json = await resp.json();
+				const parsed = parseInt(json['count'], 10);
+				if (!isNaN(parsed)) {
+					return parsed;
+				}
+			}
+
+			return DEFAULT_NUM_AUDIO_TRACKS;
+		} catch {
+			return DEFAULT_NUM_AUDIO_TRACKS;
+		}
+	};
 
 	function onIncrement() {
 		if (clickTimeout !== undefined) {
@@ -37,6 +56,9 @@
 		incrementGlobalCount();
 	}
 
+	/**
+	 *  Returns a random value from 0 to the given `maxVal`.
+	 */
 	function randomInt(maxVal: number) {
 		return Math.floor(Math.random() * (maxVal + 1));
 	}
@@ -45,8 +67,11 @@
 	async function onClick() {
 		onIncrement();
 
+		if (numAudioTracks === undefined) {
+			numAudioTracks = (await getNumAudioTracks()) - 1;
+		}
 		// Get the audio track from the server...
-		const audioTrack = randomInt(LAST_AUDIO_TRACK_NUM);
+		const audioTrack = randomInt(numAudioTracks);
 		const audio = new Audio();
 		audio.crossOrigin = 'anonymous';
 		audio.src = `${API_URL}/sound/${audioTrack}`;
@@ -58,7 +83,7 @@
 
 		if (audioContext != undefined) {
 			const src = audioContext.createMediaElementSource(audio);
-			const pan = randomInt(2) - 1;
+			const pan = randomInt(2) - 1; // Random value from -1, 0, and 1.
 			const stereoNode = new StereoPannerNode(audioContext, { pan });
 			src.connect(stereoNode).connect(audioContext.destination);
 		}
