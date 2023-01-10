@@ -1,4 +1,4 @@
-use std::{env, sync::Arc};
+use std::{env, fs, sync::Arc};
 
 use axum::{
     body::Body,
@@ -30,7 +30,7 @@ async fn main() {
         .with_ansi(false)
         .init();
 
-    info!("Starting up...");
+    info!("Starting up HTV...");
     let pool = SqlitePool::connect(&env::var("DATABASE_URL").unwrap())
         .await
         .unwrap();
@@ -49,6 +49,7 @@ async fn main() {
         .route("/sound/:id", get(sound))
         .route("/count", get(count))
         .route("/increment", post(increment))
+        .route("/num-files", get(num_audio_tracks))
         .layer(cors)
         .layer(Extension(pool_rc.clone()))
         .fallback(not_found_handler.into_service());
@@ -58,7 +59,7 @@ async fn main() {
     info!("Listening on {}", addr);
 
     if std::path::Path::new("assets/").exists() {
-        let num_files = std::fs::read_dir("assets/").unwrap().count();
+        let num_files = fs::read_dir("assets/").unwrap().count();
         info!("Found {} files in assets!", num_files);
     } else {
         error!("Warning - no asset/ folder found! There should be one located near the binary!");
@@ -165,4 +166,22 @@ async fn increment(Extension(pool): Extension<PoolExt>) {
             error!("Failed to increment in DB - err: {}", err);
         }
     }
+}
+
+/// Returns the number of audio tracks available.
+async fn num_audio_tracks() -> Json<Count> {
+    let num_tracks = match fs::read_dir("assets/") {
+        Ok(rd) => rd
+            .filter(|de| match de {
+                Ok(de) => match de.path().extension() {
+                    Some(ext) => ext == "mp3",
+                    None => false,
+                },
+                Err(_) => false,
+            })
+            .count() as u64,
+        Err(_) => 0,
+    };
+
+    Json(Count::new(num_tracks))
 }
