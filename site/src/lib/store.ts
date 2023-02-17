@@ -1,4 +1,4 @@
-import { get, writable } from 'svelte/store';
+import { get, writable, type Subscriber } from 'svelte/store';
 import { dev } from '$app/environment';
 
 export const API_URL: string = dev ? 'http://localhost:8080' : 'https://api.howsthevolu.me';
@@ -50,31 +50,34 @@ const calculateIncrement = (diff: number) => {
 	return Math.max(1, 10 ** Math.floor(Math.log10(diff)));
 };
 
+export const setGlobalCount = async (set: Subscriber<number>, newVal: number) => {
+	// Some ugly code to make a pretty count-up.
+	let currentVal = get(globalCount);
+	let increment = calculateIncrement(newVal - currentVal);
+	if (timer !== undefined) {
+		clearInterval(timer);
+	}
+
+	timer = setInterval(() => {
+		if (currentVal >= newVal) {
+			clearInterval(timer);
+		} else {
+			const diff = newVal - currentVal;
+			if (diff < increment) {
+				increment = calculateIncrement(diff);
+			}
+
+			currentVal += increment;
+			set(Math.min(currentVal, newVal));
+		}
+	}, 20);
+};
+
 let timer: undefined | ReturnType<typeof setInterval> = undefined;
 export const globalCount = writable(0, (set) => {
 	const interval = setInterval(async () => {
 		const newVal = await getGlobalCount();
-
-		// Some ugly code to make a pretty count-up.
-		let currentVal = get(globalCount);
-		let increment = calculateIncrement(newVal - currentVal);
-		if (timer !== undefined) {
-			clearInterval(timer);
-		}
-
-		timer = setInterval(() => {
-			if (currentVal >= newVal) {
-				clearInterval(timer);
-			} else {
-				const diff = newVal - currentVal;
-				if (diff < increment) {
-					increment = calculateIncrement(diff);
-				}
-
-				currentVal += increment;
-				set(Math.min(currentVal, newVal));
-			}
-		}, 20);
+		await setGlobalCount(set, newVal);
 	}, 20 * 1000);
 
 	return () => {

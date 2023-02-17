@@ -6,15 +6,18 @@
 	import InfoModal from '$lib/components/InfoModal.svelte';
 	import IrysPic from '$lib/components/IrysPic.svelte';
 	import Iwys from '$lib/components/Iwys.svelte';
-	import { clickOpacity, getGlobalCount, globalCount } from '$lib/store';
+	import { clickOpacity, getGlobalCount, globalCount, setGlobalCount } from '$lib/store';
 	import Anniversary from '$lib/components/Anniversary.svelte';
 	import Diamonds from '$lib/components/Diamonds.svelte';
 	import Confetti from '$lib/components/Confetti.svelte';
 	import Birthday from '$lib/components/Birthday.svelte';
+	import { onMount } from 'svelte';
 
-	getGlobalCount()
-		.then((val) => globalCount.set(val))
-		.catch(() => globalCount.set(0));
+	onMount(async () => {
+		getGlobalCount()
+			.then((val) => setGlobalCount(globalCount.set, val))
+			.catch(() => globalCount.set(0));
+	});
 
 	let modalVisible = false;
 
