@@ -13,10 +13,13 @@
 	import Birthday from '$lib/components/Birthday.svelte';
 	import { onMount } from 'svelte';
 
+	async function initializeGlobalCount() {
+		const val = await getGlobalCount();
+		await setGlobalCount(globalCount.set, val);
+	}
+
 	onMount(async () => {
-		getGlobalCount()
-			.then((val) => setGlobalCount(globalCount.set, val))
-			.catch(() => globalCount.set(0));
+		await initializeGlobalCount();
 	});
 
 	let modalVisible = false;

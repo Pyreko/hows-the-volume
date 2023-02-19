@@ -53,24 +53,27 @@ const calculateIncrement = (diff: number) => {
 export const setGlobalCount = async (set: Subscriber<number>, newVal: number) => {
 	// Some ugly code to make a pretty count-up.
 	let currentVal = get(globalCount);
-	let increment = calculateIncrement(newVal - currentVal);
-	if (timer !== undefined) {
-		clearInterval(timer);
-	}
 
-	timer = setInterval(() => {
-		if (currentVal >= newVal) {
+	if (currentVal != newVal) {
+		let increment = calculateIncrement(newVal - currentVal);
+		if (timer !== undefined) {
 			clearInterval(timer);
-		} else {
-			const diff = newVal - currentVal;
-			if (diff < increment) {
-				increment = calculateIncrement(diff);
-			}
-
-			currentVal += increment;
-			set(Math.min(currentVal, newVal));
 		}
-	}, 20);
+
+		timer = setInterval(() => {
+			if (currentVal >= newVal) {
+				clearInterval(timer);
+			} else {
+				const diff = newVal - currentVal;
+				if (diff < increment) {
+					increment = calculateIncrement(diff);
+				}
+
+				currentVal += increment;
+				set(Math.min(currentVal, newVal));
+			}
+		}, 20);
+	}
 };
 
 let timer: undefined | ReturnType<typeof setInterval> = undefined;
