@@ -152,7 +152,7 @@
 		left: 0;
 		top: 0;
 		width: 100%;
-		height: 100%;
+		height: 100vh;
 		background-color: rgba(75, 75, 75, 0.5);
 		justify-content: center;
 		align-items: center;
