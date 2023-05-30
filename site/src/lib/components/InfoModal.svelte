@@ -66,7 +66,7 @@
 					<li>
 						<p>
 							<a
-								href="https://twitter.com/chrone_co/status/1426878310328332292"
+								href="https://twitter.com/chrone_co/status/1633428830311550976"
 								target="_blank"
 								rel="noopener noreferrer">Chroneco's emotes and tweet</a
 							> were used for the favicon, some elements, and inspiration for theming.
