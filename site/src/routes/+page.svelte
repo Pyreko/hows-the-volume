@@ -121,4 +121,10 @@
 		gap: 0.5rem;
 		overflow: auto;
 	}
+
+	@supports (height: 100svh) {
+		.box {
+			min-height: 100svh;
+		}
+	}
 </style>

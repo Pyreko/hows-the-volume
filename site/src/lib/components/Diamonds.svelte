@@ -11,6 +11,12 @@
 		overflow: hidden;
 	}
 
+	@supports (height: 100svh) {
+		.diamonds-wrapper {
+			height: 100svh;
+		}
+	}
+
 	.diamonds {
 		width: 100%;
 		height: 100%;
