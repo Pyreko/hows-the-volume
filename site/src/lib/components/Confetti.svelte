@@ -52,6 +52,12 @@
 			z-index: -20;
 		}
 
+		@supports (height: 100svh) {
+			.confetti-wrapper {
+				height: 100svh;
+			}
+		}
+
 		.confetti {
 			width: 15px;
 			height: 15px;
