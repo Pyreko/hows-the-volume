@@ -122,7 +122,7 @@
 		overflow: auto;
 	}
 
-	@supports (height: 100svh) {
+	@supports (min-height: 100svh) {
 		.box {
 			min-height: 100svh;
 		}
