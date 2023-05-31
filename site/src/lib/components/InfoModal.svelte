@@ -158,12 +158,6 @@
 		align-items: center;
 	}
 
-	@supports (height: 100svh) {
-		#modal-background {
-			height: 100svh;
-		}
-	}
-
 	.modal-wrapper {
 		position: relative;
 		width: 900px;
