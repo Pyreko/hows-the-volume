@@ -1,12 +1,14 @@
+<script lang="ts">
+	const SPOTIFY_LINK = 'https://open.spotify.com/artist/7y1hO3QeftnOJmWCbzeZav';
+	const TWITTER_LINK = 'https://twitter.com/irys_en';
+	const YOUTUBE_LINK = 'https://www.youtube.com/@IRyS';
+</script>
+
 <div>
 	<p>
-		Subscribe to IRyS on <a
-			href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g"
-			target="_blank"
-			rel="noopener noreferrer">YouTube</a
-		>
-		and follow her on
-		<a href="https://twitter.com/irys_en" target="_blank" rel="noopener noreferrer">Twitter</a>!
+		Support IRyS on <a href={YOUTUBE_LINK} target="_blank" rel="noopener noreferrer">YouTube</a>,
+		<a href={TWITTER_LINK} target="_blank" rel="noopener noreferrer">Twitter</a>, and
+		<a href={SPOTIFY_LINK} target="_blank" rel="noopener noreferrer">Spotify</a>!
 	</p>
 </div>
 
