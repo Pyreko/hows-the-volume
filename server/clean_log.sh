@@ -2,4 +2,4 @@
 
 set -eu
 
-find /home/pyreko/htv-server/ -mtime +7 -name "volume.log*" -print -exec /bin/rm {} \;
+find ~/yc-server/ -mtime +7 -name "volume.log*" -print -exec /bin/rm {} \;

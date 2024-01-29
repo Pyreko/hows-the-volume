@@ -1,8 +1,8 @@
 #!/bin/bash
 
-set -eu
+set -eux
 
-pkill -2 hows-the-volume
+pkill -2 hows-the-volume || true
 while pgrep -u $UID -x hows-the-volume >/dev/null; do sleep 1; done
 cp ./target/release/hows-the-volume-server ~/htv-server/hows-the-volume-server
 cp -r ./assets ~/htv-server/
