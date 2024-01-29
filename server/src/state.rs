@@ -64,15 +64,26 @@ async fn sync_counts(pool: &Arc<Pool<Sqlite>>, state: &State) {
 
         if let Ok(did_update) = update_db_count(pool.clone(), new_val).await {
             if !did_update {
-                // No update - we might have to sync the state to be correct if the state is currently
+                // No update means that we might have to sync the state to be correct if the state is currently
                 // showing a LOWER value than the DB.
+                //
+                // This won't fire if the values are _equal_ though (or it shouldn't), due to the dirty
+                // bit check - if they're equal and the states are synced, then the DB update shouldn't
+                // have ever fired!
+
                 if let Ok(current_db_value) = get_db_count(pool).await {
                     let mut value = state.lock().await;
                     if value.count < current_db_value {
-                        // This should basically never happen but just in case, we want the DB to be
-                        // "the source of truth" for most cases.
-                        warn!("The state's value was lower than what was in the DB - resyncing state.");
                         value.count = current_db_value;
+
+                        // Unset dirty as they're now equal, so no need for the sync job to fire.
+                        value.dirty = false;
+
+                        drop(value);
+
+                        warn!(
+                            "The state's value was lower than what was in the DB - state resynced."
+                        );
                     }
                 }
             }
