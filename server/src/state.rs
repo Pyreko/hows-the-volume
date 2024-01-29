@@ -27,9 +27,8 @@ async fn get_db_count(pool: &Pool<Sqlite>) -> Result<u64> {
     Ok(query.count as u64)
 }
 
-/// Update the DB count.
-async fn update_db_count(pool: Arc<Pool<Sqlite>>, new_count: u64) {
-    warn!("new value: {new_count}");
+/// Try to update the DB count. If the query was successful, it returns whether any rows were changed.
+async fn update_db_count(pool: Arc<Pool<Sqlite>>, new_count: u64) -> Result<bool> {
     let mut conn = pool.acquire().await.unwrap();
 
     // Note that u64 values aren't supported by SQLX for whatever reason,
@@ -44,8 +43,11 @@ async fn update_db_count(pool: Arc<Pool<Sqlite>>, new_count: u64) {
     .execute(&mut conn)
     .await
     {
-        Ok(_) => {}
-        Err(err) => error!("Failed to increment in DB - err: {err}"),
+        Ok(result) => Ok(result.rows_affected() > 0),
+        Err(err) => {
+            error!("Failed to increment in DB - err: {err}");
+            Err(err.into())
+        }
     }
 }
 
@@ -60,7 +62,21 @@ async fn sync_counts(pool: &Arc<Pool<Sqlite>>, state: &State) {
         value.dirty = false;
         drop(value); // XXX: YOU MUST CALL THIS, OR YOU WILL DEADLOCK THE INCREMENT JOB!
 
-        update_db_count(pool.clone(), new_val).await;
+        if let Ok(did_update) = update_db_count(pool.clone(), new_val).await {
+            if !did_update {
+                // No update - we might have to sync the state to be correct if the state is currently
+                // showing a LOWER value than the DB.
+                if let Ok(current_db_value) = get_db_count(pool).await {
+                    let mut value = state.lock().await;
+                    if value.count < current_db_value {
+                        // This should basically never happen but just in case, we want the DB to be
+                        // "the source of truth" for most cases.
+                        warn!("The state's value was lower than what was in the DB - resyncing state.");
+                        value.count = current_db_value;
+                    }
+                }
+            }
+        }
     }
 }
 
