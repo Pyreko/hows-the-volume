@@ -7,6 +7,7 @@ edition = "2021"
 strip = "symbols"
 
 [dependencies]
+anyhow = "1.0.79"
 axum = "0.5.17" # The webapp framework of choice.
 dotenv = "0.15.0" # For accessing env vars stored in .env
 serde = { version = "1.0.137", features = ["derive"] } # For JSON serialization.
