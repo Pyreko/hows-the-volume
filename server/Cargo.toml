@@ -7,19 +7,16 @@ edition = "2021"
 strip = "symbols"
 
 [dependencies]
-anyhow = "1.0.79"
-axum = "0.5.17" # The webapp framework of choice.
-dotenv = "0.15.0" # For accessing env vars stored in .env
-serde = { version = "1.0.137", features = ["derive"] } # For JSON serialization.
-sqlx = { version = "0.6.2", features = [
-    "runtime-tokio-rustls",
-    "sqlite",
-] } # For storing counts. Overkill.
-tracing = "0.1.35" # For tracing, alongside tracing-appender and tracing-subscriber.
+anyhow = "1.0.93"
+axum = "0.5.17"                                                             # The webapp framework of choice.
+dotenv = "0.15.0"                                                           # For accessing env vars stored in .env
+serde = { version = "1.0.215", features = ["derive"] }                      # For JSON serialization.
+sqlx = { version = "0.6.2", features = ["runtime-tokio-rustls", "sqlite"] } # For storing counts. Overkill.
+tracing = "0.1.35"                                                          # For tracing, alongside tracing-appender and tracing-subscriber.
 tracing-appender = "0.2.2"
 tracing-subscriber = { version = "0.3.15", features = ["env-filter"] }
-tokio = { version = "1.19.2", features = ["full"] } # tokio's used for async.
-tower = "0.4.13" # Used alongside tower-http for serving files.
+tokio = { version = "1.19.2", features = ["full"] }                         # tokio's used for async.
+tower = "0.4.13"                                                            # Used alongside tower-http for serving files.
 tower-http = { version = "0.3.4", features = ["full"] }
 
 [build-dependencies]
