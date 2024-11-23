@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { createBubbler, stopPropagation } from 'svelte/legacy';
+
+	const bubble = createBubbler();
 	import { fade } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
 
@@ -14,14 +17,14 @@
 	}
 </script>
 
-<svelte:window on:keydown={onKeyPress} />
+<svelte:window onkeydown={onKeyPress} />
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<div id="modal-background" on:click={closeInfoModal} transition:fade={{ duration: 100 }}>
-	<div class="modal-wrapper" on:click|stopPropagation>
+<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+<div id="modal-background" onclick={closeInfoModal} transition:fade={{ duration: 100 }}>
+	<div class="modal-wrapper" onclick={stopPropagation(bubble('click'))}>
 		<div class="modal-header">
 			<h1>About</h1>
-			<button class="close" on:click={closeInfoModal}>✕</button>
+			<button class="close" onclick={closeInfoModal}>✕</button>
 		</div>
 		<div class="modal-body">
 			<div class="text-block">

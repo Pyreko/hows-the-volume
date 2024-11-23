@@ -1,5 +1,5 @@
 <div class="diamonds-wrapper">
-	<div class="diamonds" />
+	<div class="diamonds"></div>
 </div>
 
 <style>

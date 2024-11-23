@@ -22,7 +22,7 @@
 		await initializeGlobalCount();
 	});
 
-	let modalVisible = false;
+	let modalVisible = $state(false);
 
 	function openInfoModal() {
 		modalVisible = true;

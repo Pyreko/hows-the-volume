@@ -8,7 +8,7 @@
 	}
 </script>
 
-<button on:click={openInfoModal}> i </button>
+<button onclick={openInfoModal}> i </button>
 
 <style>
 	button {
