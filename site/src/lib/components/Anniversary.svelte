@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let numYears: number;
+	interface Props {
+		numYears: number;
+	}
+
+	let { numYears }: Props = $props();
 </script>
 
 <div class="celebration-wrapper">

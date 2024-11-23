@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 
-	export let showConfetti: boolean;
+	interface Props {
+		showConfetti: boolean;
+	}
+
+	let { showConfetti }: Props = $props();
 
 	function reducedMotion(): boolean {
 		try {
@@ -14,21 +18,21 @@
 
 {#if showConfetti && !reducedMotion()}
 	<div class="confetti-wrapper" transition:fade={{ duration: 200 }}>
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
-		<div class="confetti" />
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
+		<div class="confetti"></div>
 	</div>
 {/if}
 

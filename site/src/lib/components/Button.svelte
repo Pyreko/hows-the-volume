@@ -92,7 +92,7 @@
 	}
 </script>
 
-<button on:click={onClick}> Check the volume </button>
+<button onclick={onClick}> Check the volume </button>
 
 <style>
 	button {

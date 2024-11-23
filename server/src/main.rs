@@ -25,9 +25,6 @@ use tracing_subscriber::filter::EnvFilter;
 
 use crate::state::init_state;
 
-#[derive(Serialize)]
-struct EmptyJson {}
-
 async fn not_found_handler() -> impl IntoResponse {
     not_found()
 }
