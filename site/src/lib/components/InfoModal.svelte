@@ -1,27 +1,38 @@
 <script lang="ts">
-	import { createBubbler, stopPropagation } from 'svelte/legacy';
-
-	const bubble = createBubbler();
 	import { fade } from 'svelte/transition';
-	import { createEventDispatcher } from 'svelte';
 
-	const dispatch = createEventDispatcher();
+	type Props = {
+		closeModal: () => void;
+	};
+
+	let { closeModal }: Props = $props();
+
 	function closeInfoModal() {
-		dispatch('message');
+		closeModal();
+	}
+
+	function onModalMousePress(event: MouseEvent) {
+		closeInfoModal();
+		event.stopPropagation();
 	}
 
 	function onKeyPress(event: KeyboardEvent) {
 		if (event.key === 'Escape') {
 			closeInfoModal();
+			event.stopPropagation();
 		}
 	}
 </script>
 
 <svelte:window onkeydown={onKeyPress} />
 
-<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
-<div id="modal-background" onclick={closeInfoModal} transition:fade={{ duration: 100 }}>
-	<div class="modal-wrapper" onclick={stopPropagation(bubble('click'))}>
+<div
+	id="modal-background"
+	role="none"
+	onclick={onModalMousePress}
+	transition:fade={{ duration: 100 }}
+>
+	<div class="modal-wrapper">
 		<div class="modal-header">
 			<h1>About</h1>
 			<button class="close" onclick={closeInfoModal}>✕</button>

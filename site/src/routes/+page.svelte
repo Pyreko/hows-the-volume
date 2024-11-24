@@ -68,11 +68,11 @@
 <Diamonds />
 
 <div class="info-wrapper">
-	<InfoButton on:message={openInfoModal} />
+	<InfoButton openModal={openInfoModal} />
 </div>
 
 {#if modalVisible}
-	<InfoModal on:message={closeInfoModal} />
+	<InfoModal closeModal={closeInfoModal} />
 {/if}
 
 {#if $clickOpacity > 0}
@@ -86,9 +86,7 @@
 <div class="box">
 	{#if isAnniversary()}
 		<Anniversary numYears={anniversaryYears()} />
-	{/if}
-
-	{#if isBirthday()}
+	{:else if isBirthday()}
 		<Birthday />
 	{/if}
 

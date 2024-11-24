@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	type Props = {
+		openModal: () => void;
+	};
 
-	const dispatch = createEventDispatcher();
+	let { openModal }: Props = $props();
 
 	function openInfoModal() {
-		dispatch('message');
+		openModal();
 	}
 </script>
 
