@@ -3,7 +3,7 @@ use std::{sync::Arc, time::Duration};
 use anyhow::Result;
 use sqlx::{Pool, Sqlite};
 use tokio::{
-    sync::{mpsc::UnboundedSender, Mutex},
+    sync::{Mutex, mpsc::UnboundedSender},
     task::JoinHandle,
 };
 use tracing::{error, info, warn};
@@ -99,7 +99,9 @@ pub(crate) async fn init_state(
         let count = match get_db_count(&pool).await {
             Ok(val) => val,
             Err(err) => {
-                warn!("Error while trying to get the currently stored DB value of count, defaulting to 0: {err}");
+                warn!(
+                    "Error while trying to get the currently stored DB value of count, defaulting to 0: {err}"
+                );
                 0
             }
         };

@@ -4,13 +4,13 @@ use std::{env, fs, sync::Arc, time::Duration};
 
 use anyhow::Result;
 use axum::{
+    Extension, Json, Router,
     body::Body,
-    extract::{rejection::PathRejection, Path},
+    extract::{Path, rejection::PathRejection},
     handler::Handler,
     http::{HeaderValue, Method, Request, StatusCode},
     response::{IntoResponse, Response},
     routing::{get, post},
-    Extension, Json, Router,
 };
 use dotenv::dotenv;
 use serde::Serialize;
