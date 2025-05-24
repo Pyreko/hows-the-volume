@@ -89,4 +89,3 @@ export const globalCount = writable(0, (set) => {
 });
 
 export const clickOpacity = writable(0);
-
