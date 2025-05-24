@@ -7,8 +7,7 @@ use axum::{
     Extension, Json, Router,
     body::Body,
     extract::{Path, rejection::PathRejection},
-    handler::Handler,
-    http::{HeaderValue, Method, Request, StatusCode},
+    http::{HeaderValue, Method, Request, StatusCode, Uri},
     response::{IntoResponse, Response},
     routing::{get, post},
 };
@@ -25,12 +24,12 @@ use tracing_subscriber::filter::EnvFilter;
 
 use crate::state::init_state;
 
-async fn not_found_handler() -> impl IntoResponse {
-    not_found()
+fn not_found() -> (StatusCode, String) {
+    (StatusCode::NOT_FOUND, "Not Found".to_string())
 }
 
-fn not_found() -> StatusCode {
-    StatusCode::NOT_FOUND
+async fn not_found_handler(_uri: Uri) -> (StatusCode, String) {
+    not_found()
 }
 
 /// A JSON message containing a count.
@@ -140,17 +139,18 @@ async fn main() -> Result<()> {
         .allow_origin(origins);
 
     let app = Router::new()
-        .route("/sound/:id", get(sound))
+        .route("/sound/{id}", get(sound))
         .route("/count", get(count))
         .route("/increment", post(increment))
         .route("/num-files", get(num_audio_tracks))
         .layer(cors)
         .layer(Extension(state))
-        .fallback(not_found_handler.into_service());
+        .fallback(not_found_handler);
 
-    let addr = "127.0.0.1:8080".parse()?;
+    let address = "127.0.0.1:8080";
+    let addr = tokio::net::TcpListener::bind(address).await?;
 
-    info!("Listening on {addr}");
+    info!("Listening on {address}");
 
     if std::path::Path::new("assets/").exists() {
         let num_files = fs::read_dir("assets/").unwrap().count();
@@ -159,8 +159,7 @@ async fn main() -> Result<()> {
         error!("Warning - no asset/ folder found! There should be one located near the binary!");
     }
 
-    axum::Server::bind(&addr)
-        .serve(app.into_make_service())
+    axum::serve(addr, app.into_make_service())
         .with_graceful_shutdown(async {
             tokio::signal::ctrl_c().await.unwrap();
             info!("Shutdown signal received.");
