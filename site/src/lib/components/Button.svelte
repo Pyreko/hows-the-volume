@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { clickOpacity, localCount, incrementGlobalCount, API_URL } from '$lib/store';
+	import { clickOpacity, localCount, incrementGlobalCount, API_URL, randomInt } from '$lib/store';
+	import { onDestroy } from 'svelte';
 
 	let clickTimeout: undefined | ReturnType<typeof setTimeout> = undefined;
 	let clickTimer: undefined | ReturnType<typeof setInterval> = undefined;
@@ -56,14 +57,8 @@
 		incrementGlobalCount();
 	}
 
-	/**
-	 *  Returns a random value from 0 to the given `maxVal`.
-	 */
-	function randomInt(maxVal: number) {
-		return Math.floor(Math.random() * (maxVal + 1));
-	}
-
 	let audioContext: AudioContext | undefined = undefined;
+
 	async function onClick() {
 		onIncrement();
 
@@ -75,6 +70,7 @@
 		const audio = new Audio();
 		audio.crossOrigin = 'anonymous';
 		audio.src = `${API_URL}/sound/${audioTrack}`;
+		audio.autoplay = true;
 
 		// Now stick it in a random channel from -1 to 1.
 		if (audioContext == undefined) {
@@ -88,8 +84,14 @@
 			src.connect(stereoNode).connect(audioContext.destination);
 		}
 
-		audio.play();
+		await audio.play();
 	}
+
+	onDestroy(() => {
+		if (audioContext != undefined) {
+			audioContext.close();
+		}
+	});
 </script>
 
 <button onclick={onClick}> Check the volume </button>
