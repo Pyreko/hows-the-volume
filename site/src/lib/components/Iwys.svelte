@@ -1,6 +1,6 @@
 <script lang="ts">
 	type Props = {
-		nephilimLabel: string | [string, string];
+		nephilimLabel: string | string[];
 	};
 
 	let { nephilimLabel }: Props = $props();
