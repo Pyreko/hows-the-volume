@@ -1,31 +1,14 @@
 <script lang="ts">
-	import { randomInt } from '$lib/store';
+	interface Props {
+		nephilimLabel: string | string[];
+	}
+
+	let { nephilimLabel }: Props = $props();
 
 	const SPOTIFY_LINK = 'https://open.spotify.com/artist/7y1hO3QeftnOJmWCbzeZav';
 	const TWITTER_LINK = 'https://twitter.com/irys_en';
 	const YOUTUBE_LINK = 'https://www.youtube.com/@IRyS';
 	const APPLE_MUSIC_LINK = 'https://music.apple.com/jp/artist/irys/1576219850';
-
-	const nephilimLabels = [
-		'Hope',
-		'the nephilim',
-		'███████ IRyS',
-		'the "seiso" nephilim',
-		'the seiso nephilim',
-		'the pon',
-		'the Embodiment of HOPE',
-		'the keyboard enthusiast',
-		'Umino Milk',
-		'The Hot Pink One',
-		['the Diamond Girlfriend', 'https://www.youtube.com/watch?v=EXM0EE_NpQc']
-	];
-
-	const IRYS_LABEL_OFFSET = 20;
-	const nephilimLabelIndex = randomInt(nephilimLabels.length - 1 + IRYS_LABEL_OFFSET);
-	export const nephilimLabel =
-		nephilimLabelIndex <= IRYS_LABEL_OFFSET
-			? 'IRyS'
-			: nephilimLabels[nephilimLabelIndex - IRYS_LABEL_OFFSET];
 </script>
 
 <div>
