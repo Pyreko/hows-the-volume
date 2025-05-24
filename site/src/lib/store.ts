@@ -96,4 +96,3 @@ export const clickOpacity = writable(0);
 export function randomInt(maxVal: number) {
 	return Math.floor(Math.random() * (maxVal + 1));
 }
-
