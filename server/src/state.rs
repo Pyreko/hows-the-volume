@@ -21,7 +21,7 @@ pub type State = Arc<Mutex<Value>>;
 async fn get_db_count(pool: &Pool<Sqlite>) -> Result<u64> {
     let mut conn = pool.acquire().await?;
     let query = sqlx::query!("SELECT count FROM counts WHERE name = 'volume'")
-        .fetch_one(&mut conn)
+        .fetch_one(&mut *conn)
         .await?;
 
     Ok(query.count as u64)
@@ -40,7 +40,7 @@ async fn update_db_count(pool: Arc<Pool<Sqlite>>, new_count: u64) -> Result<bool
         "UPDATE counts SET count = MAX(count, ?) WHERE name = 'volume'",
         new_count
     )
-    .execute(&mut conn)
+    .execute(&mut *conn)
     .await
     {
         Ok(result) => Ok(result.rows_affected() > 0),
