@@ -1,10 +1,17 @@
 <script lang="ts">
-	import { clickOpacity, localCount, incrementGlobalCount, API_URL, randomInt } from '$lib/store';
+	import { clickOpacity, localCount, incrementGlobalCount, API_URL } from '$lib/store';
 	import { onDestroy } from 'svelte';
 
 	let clickTimeout: undefined | ReturnType<typeof setTimeout> = undefined;
 	let clickTimer: undefined | ReturnType<typeof setInterval> = undefined;
 	let numAudioTracks: undefined | number = undefined;
+
+	/**
+	 *  Returns a random value from 0 to the given `maxVal`.
+	 */
+	function randomInt(maxVal: number) {
+		return Math.floor(Math.random() * (maxVal + 1));
+	}
 
 	const DEFAULT_NUM_AUDIO_TRACKS = 43;
 	const getNumAudioTracks = async (): Promise<number> => {

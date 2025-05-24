@@ -6,12 +6,16 @@
 	import InfoModal from '$lib/components/InfoModal.svelte';
 	import IrysPic from '$lib/components/IrysPic.svelte';
 	import Iwys from '$lib/components/Iwys.svelte';
-	import { clickOpacity, getGlobalCount, globalCount, randomInt, setGlobalCount } from '$lib/store';
+	import { clickOpacity, getGlobalCount, globalCount, setGlobalCount } from '$lib/store';
 	import Anniversary from '$lib/components/Anniversary.svelte';
 	import Diamonds from '$lib/components/Diamonds.svelte';
 	import Confetti from '$lib/components/Confetti.svelte';
 	import Birthday from '$lib/components/Birthday.svelte';
 	import { onMount } from 'svelte';
+	import type { PageData } from './$types';
+
+	const { data }: { data: PageData } = $props();
+	const { nephilimLabel } = data;
 
 	async function initializeGlobalCount() {
 		const val = await getGlobalCount();
@@ -63,27 +67,6 @@
 	function shouldShowConfetti(): boolean {
 		return isAnniversary() || isBirthday();
 	}
-
-	const nephilimLabels = [
-		'Hope',
-		'the nephilim',
-		'███████ IRyS',
-		'the "seiso" nephilim',
-		'the seiso nephilim',
-		'the pon',
-		'the Embodiment of HOPE',
-		'the keyboard enthusiast',
-		'Umino Milk',
-		'The Hot Pink One',
-		['the Diamond Girlfriend', 'https://www.youtube.com/watch?v=EXM0EE_NpQc']
-	];
-
-	const IRYS_LABEL_OFFSET = 20;
-	const nephilimLabelIndex = randomInt(nephilimLabels.length - 1 + IRYS_LABEL_OFFSET);
-	const nephilimLabel =
-		nephilimLabelIndex <= IRYS_LABEL_OFFSET
-			? 'IRyS'
-			: nephilimLabels[nephilimLabelIndex - IRYS_LABEL_OFFSET];
 </script>
 
 <Diamonds />

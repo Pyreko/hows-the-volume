@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../styles/fonts.css';
+
 	interface Props {
 		children?: import('svelte').Snippet;
 	}

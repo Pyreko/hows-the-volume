@@ -1,7 +1,7 @@
 <script lang="ts">
-	interface Props {
+	type Props = {
 		nephilimLabel: string | string[];
-	}
+	};
 
 	let { nephilimLabel }: Props = $props();
 
