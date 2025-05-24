@@ -90,9 +90,3 @@ export const globalCount = writable(0, (set) => {
 
 export const clickOpacity = writable(0);
 
-/**
- *  Returns a random value from 0 to the given `maxVal`.
- */
-export function randomInt(maxVal: number) {
-	return Math.floor(Math.random() * (maxVal + 1));
-}
