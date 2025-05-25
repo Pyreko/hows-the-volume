@@ -39,7 +39,7 @@
 		</div>
 		<div class="modal-body">
 			<div class="text-block">
-				<h1>What is this?</h1>
+				<h1>What's the volume?</h1>
 				<p>
 					This is a site for <a
 						href="https://www.youtube.com/channel/UC8rcEBzJSleTkf_-agPM20g"
@@ -50,7 +50,7 @@
 					<a href="https://impomu.com/" target="_blank" rel="noopener noreferrer">impomu</a>
 					and
 					<a href="https://faunaraara.com/" target="_blank" rel="noopener noreferrer">faunaraara</a
-					>.
+					>, and is based on her habit of asking how the volume is.
 				</p>
 				<p>
 					For those interested in the source code for both the site and server, it can be found <a
@@ -88,10 +88,17 @@
 					</li>
 					<li>
 						<p>
-							The font used throughout is <a
+							The fonts used throughout are <a
 								href="https://www.fontspring.com/fonts/inky-type/riffic"
 								target="_blank"
 								rel="noopener noreferrer">Riffic Free Bold</a
+							>
+							and
+							<a
+								id="fred"
+								href="https://fonts.google.com/specimen/Fredoka"
+								target="_blank"
+								rel="noopener noreferrer">Fredoka</a
 							>.
 						</p>
 					</li>
@@ -151,6 +158,14 @@
 					>!
 				</p>
 			</div>
+			<div class="text-block">
+				<h1>Yoisho?</h1>
+				<p>
+					<a href="https://yoisho.howsthevolu.me/" target="_blank" rel="noopener noreferrer"
+						>Yoisho.</a
+					>
+				</p>
+			</div>
 			<div class="image-block">
 				<img src="/images/heart.webp" alt="heart" loading="lazy" />
 			</div>
@@ -197,7 +212,8 @@
 	}
 
 	.modal-header h1 {
-		font-family: sans-serif;
+		font-family: 'Fredoka Variable', sans-serif;
+		font-weight: 500;
 		font-size: 28px;
 		flex-grow: 2;
 		padding: 20px 0px 20px 22px;
@@ -206,7 +222,8 @@
 	}
 
 	.close {
-		font-family: 'Riffic', sans-serif;
+		font-family: 'Fredoka Variable', sans-serif;
+		font-weight: 600;
 		width: 18px;
 		height: 18px;
 		background-color: transparent;
@@ -233,7 +250,7 @@
 	}
 
 	.text-block {
-		font-family: sans-serif;
+		font-family: 'Fredoka Variable', sans-serif;
 		margin: 0;
 		display: flex;
 		flex-direction: column;
@@ -241,6 +258,7 @@
 	}
 
 	.text-block h1 {
+		font-weight: 500;
 		font-size: larger;
 		margin-top: 0px;
 		margin-bottom: 0px;
@@ -249,6 +267,7 @@
 	.text-block p,
 	.text-block a,
 	.text-block ul {
+		font-weight: 400;
 		font-size: medium;
 		margin: 0px;
 	}
