@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../styles/fonts.css';
+	import '@fontsource-variable/fredoka';
 
 	interface Props {
 		children?: import('svelte').Snippet;
